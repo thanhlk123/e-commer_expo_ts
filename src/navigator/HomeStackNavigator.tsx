@@ -6,11 +6,7 @@ import HomeMainScreen from "@screens/homeStackScreen/HomeMainScreen";
 import ShopScreen from "@screens/homeStackScreen/ShopScreen";
 import SalesScreen from "@screens/homeStackScreen/SalesScreen";
 
-const BagScreenStack = createStackNavigator();
-const CategoriesScreenStack = createStackNavigator();
 const HomeScreenStack = createStackNavigator();
-const NotificationsScreenStack = createStackNavigator();
-const ProfileScreenStack = createStackNavigator();
 
 export const HomeStackNavigator = () => {
   const homeScreenOptions = () => {
