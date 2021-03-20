@@ -7,6 +7,22 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "strict": true
+    "strict": true,
+    "baseUrl": "./",                  /* Base directory to resolve non-absolute module names. */
+    "paths": {
+      "*": ["src/*"],
+      "@theme/*": ["src/theme/*"],
+      "@appRedux/*": ["src/appRedux/*"],
+      "@navigator/*": ["src/navigator/*"],
+      "@assets/*": ["src/assets/*"],
+      "@screens/*": ["src/screens/*"],
+      "@locales/*": ["src/locales/*"],
+      "@components/*": ["src/components/*"],
+      "@constants/*": ["src/constants/*"],
+      "@services/*": ["src/services/*"],
+      "@middleware/*": ["src/middleware/*"],
+      "@actionTypes/*": ["src/appRedux/actionTypes/*"],
+      "@utils/*": ["src/utils/*"],
+    },      
   }
 }
