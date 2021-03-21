@@ -1,16 +1,16 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import React, { Component } from "react";
+import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-import MyBagHomeScreen from "../MyBagStack/MyBagHomeScreen";
-import AdressScreen from "../MyBagStack/AddressScreen";
-import ConfirmScreen from "../MyBagStack/ConfirmScreen";
-import PaymentScreen from "../MyBagStack/PaymentScreen";
+import MyBagHomeScreen from "@screens/bagStackScreen/MyBagHomeScreen";
+import AdressScreen from "@screens/bagStackScreen/AddressScreen";
+import ConfirmScreen from "@screens/bagStackScreen/ConfirmScreen";
+import PaymentScreen from "@screens/bagStackScreen/PaymentScreen";
 
 const Stack = createStackNavigator();
 
-export const BagStackNavigator = () => {
+export const BagStackNavigator = (props: any) => {
   const categoriesMainOptions = () => {
     let headerTitleAlign = "center";
     let headerTitle = "Categories";
@@ -25,7 +25,6 @@ export const BagStackNavigator = () => {
       />
     );
     return {
-      headerTitleAlign,
       headerStyle,
       headerRight,
       headerTintColor,
@@ -38,7 +37,7 @@ export const BagStackNavigator = () => {
     let headerTintColor = "white";
     let headerBackTitleVisible = true;
     let headerLeft = () => (
-      <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+      <TouchableOpacity onPress={() => props.navigation.goBack()}>
         <Text style={styles.backButton}>Back</Text>
       </TouchableOpacity>
     );
@@ -51,7 +50,6 @@ export const BagStackNavigator = () => {
       />
     );
     return {
-      headerTitleAlign,
       headerStyle,
       headerRight,
       headerTintColor,
@@ -64,22 +62,22 @@ export const BagStackNavigator = () => {
       <Stack.Screen
         name="MyBagHomeScreen"
         component={MyBagHomeScreen}
-        options={() => this.CategoriesMainOptions()}
+        options={categoriesMainOptions()}
       />
       <Stack.Screen
         name="AddressScreen"
         component={AdressScreen}
-        options={() => this.ListCategoriesOptions()}
+        options={listCategoriesOptions()}
       />
       <Stack.Screen
         name="ConfirmScreen"
         component={ConfirmScreen}
-        options={() => this.ListCategoriesOptions()}
+        options={listCategoriesOptions()}
       />
       <Stack.Screen
         name="PaymentSrceen"
         component={PaymentScreen}
-        options={() => this.ListCategoriesOptions()}
+        options={listCategoriesOptions()}
       />
     </Stack.Navigator>
   );
@@ -93,4 +91,3 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
-export default BagStackNavigator;
