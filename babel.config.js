@@ -21,6 +21,8 @@ module.exports = function(api) {
             "@middleware": "./src/middleware",
             "@actionTypes": "./src/appRedux/actionTypes",
             "@utils": "./src/utils",
+            "@sagas": "./src/sagas",
+            "@demoData": "./src/demoData",
           },
         },
       ],

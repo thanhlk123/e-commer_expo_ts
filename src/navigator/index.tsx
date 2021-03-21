@@ -3,16 +3,15 @@ import { StyleSheet, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
-  MaterialCommunityIcons,
   SimpleLineIcons,
   FontAwesome,
 } from "@expo/vector-icons";
 
-import HomeScreen from "./screens/HomeScreen";
-import CategoriesScreen from "./screens/CategoriesScreen";
-import ProfileScreen from "./screens/ProfileScreen";
-import NotificationsScreen from "./screens/NotificationsScreen";
-import BagScreen from "./screens/BagScreen";
+import {HomeStackNavigator} from "./HomeStackNavigator";
+import {CategoriesStackNavigator} from "./CategoriesStackNavigator";
+import { ProfileStackNavigator } from "./ProfileStackNavigator";
+import { NotificationsStackNavigator } from "./NotificationsStackNavigator";
+import { BagStackNavigator } from "./BagStackNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,7 +26,7 @@ function BottomTabs() {
           ),
         }}
         name="Home"
-        component={HomeScreen}
+        component={HomeStackNavigator}
       />
       <Tab.Screen
         options={{
@@ -37,7 +36,7 @@ function BottomTabs() {
           ),
         }}
         name="Categories"
-        component={CategoriesScreen}
+        component={CategoriesStackNavigator}
       />
       <Tab.Screen
         options={{
@@ -47,7 +46,7 @@ function BottomTabs() {
           ),
         }}
         name="Notifications"
-        component={NotificationsScreen}
+        component={ProfileStackNavigator}
       />
       <Tab.Screen
         options={{
@@ -57,7 +56,7 @@ function BottomTabs() {
           ),
         }}
         name="Bag"
-        component={BagScreen}
+        component={NotificationsStackNavigator}
       />
       <Tab.Screen
         options={{
@@ -67,7 +66,7 @@ function BottomTabs() {
           ),
         }}
         name="Profile"
-        component={ProfileScreen}
+        component={BagStackNavigator}
       />
     </Tab.Navigator>
   );

@@ -7,6 +7,7 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
+    "noImplicitAny": false,
     "strict": true,
     "baseUrl": "./",                  /* Base directory to resolve non-absolute module names. */
     "paths": {
@@ -23,6 +24,9 @@
       "@middleware/*": ["src/middleware/*"],
       "@actionTypes/*": ["src/appRedux/actionTypes/*"],
       "@utils/*": ["src/utils/*"],
+      "@sagas/*": ["src/sagas/*"],
+      "@demoData/*": ["src/demoData/*"],
+
     },      
   }
 }
