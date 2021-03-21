@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, ScrollView, SafeAreaView, TouchableOpacity, Image, Dimensions, View, Animated, TouchableHighlight } from 'react-native';
 import { AntDesign } from '@expo/vector-icons'
-import Topic from '../components/Topic'
+
+import Topic from './common/Topic'
 
 const { width, height } = Dimensions.get('screen');
 
@@ -39,7 +40,7 @@ const List = [
 
 ]
 
-class ShopScreen extends Component {
+class ShopScreen extends Component<{navigation: any}, {}> {
   constructor(props) {
     super(props)
   }
