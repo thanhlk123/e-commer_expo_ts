@@ -31,12 +31,16 @@ const asyncFunctionMiddleware = storeAPI => next => action => {
     // then call the function and pass `dispatch` and `getState` as arguments
     return action(storeAPI.dispatch, storeAPI.getState)
   }
-
+  console.log('prev state', storeAPI.getState())
+  console.log('dispatching', action)
+  let result = next(action);
+  console.log('next state', storeAPI.getState())
   // Otherwise, it's a normal action - send it onwards
   return next(action)
 }
 
-const middlewareProduction = [sagaMiddleware, asyncFunctionMiddleware];
+const middlewareProduction = [asyncFunctionMiddleware, sagaMiddleware];
+  ;
 
 // if (__DEV__) {
 //   middlewareProduction.push(logger);
