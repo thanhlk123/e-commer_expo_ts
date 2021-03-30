@@ -38,9 +38,9 @@ const asyncFunctionMiddleware = storeAPI => next => action => {
 
 const middlewareProduction = [sagaMiddleware, asyncFunctionMiddleware];
 
-if (__DEV__) {
-  middlewareProduction.push(logger);
-}
+// if (__DEV__) {
+//   middlewareProduction.push(logger);
+// }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

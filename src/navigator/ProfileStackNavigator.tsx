@@ -76,5 +76,3 @@ export const ProfileStackNavigator = () => {
     </Stack.Navigator>
   );
 };
-
-export default ProfileScreen;
