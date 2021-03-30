@@ -12,16 +12,15 @@ import {
 
 import { connect } from 'react-redux';
 import RenderItemChoosed from '../Component/RenderItemChoosed'
-import addNumber, { subNumber } from '../../redux/Actions/CounterViewActions'
 
-class myBagContainer extends Component {
+class myBagContainer extends Component<any> {
 
   constructor(props) {
     super(props);
   }
 
   render() {
-    const { number } = this.props.number;
+    const { number }  = this.props.number;
 
     return (
         <RenderItemChoosed val={ number }
@@ -37,13 +36,10 @@ class myBagContainer extends Component {
 export default connect( 
   state => {
     return {
-      number : state.number
     }
   },
   dispatch => {
     return {
-        MinusItem: (val) => dispatch( subNumber(val) ),
-        PlusItem: (val) => dispatch( addNumber(val) )
     }
   }
 

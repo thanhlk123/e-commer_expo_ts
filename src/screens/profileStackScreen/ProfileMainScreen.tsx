@@ -69,7 +69,7 @@ export default class ProfileMainScreen extends Component<
               }}
             >
               <Image
-                source={require("../images/profile/user.png")}
+                source={require("@assets/images/profile/user.png")}
                 style={{ width: 100, height: 100, borderRadius: 50 }}
               />
               <View
@@ -121,7 +121,7 @@ export default class ProfileMainScreen extends Component<
                 }}
               >
                 <Image
-                  source={require("../images/profile/sale_icon.png")}
+                  source={require("@assets/images/profile/sale_icon.png")}
                   style={{ width: 30, height: 30 }}
                 />
                 <Text style={{ paddingLeft: 5 }}>Săn deal mỗi ngày</Text>
@@ -144,7 +144,7 @@ export default class ProfileMainScreen extends Component<
                   }}
                 >
                   <Image
-                    source={require("../images/profile/naptiendienthoai.png")}
+                    source={require("@assets/images/profile/naptiendienthoai.png")}
                     style={{ width: 50, height: 50 }}
                   />
                   <Text style={{ textAlign: "center" }}>
@@ -160,7 +160,7 @@ export default class ProfileMainScreen extends Component<
                   }}
                 >
                   <Image
-                    source={require("../images/profile/dulich.png")}
+                    source={require("@assets/images/profile/dulich.png")}
                     style={{ width: 50, height: 50 }}
                   />
                   <Text style={{ textAlign: "center" }}>
@@ -176,7 +176,7 @@ export default class ProfileMainScreen extends Component<
                   }}
                 >
                   <Image
-                    source={require("../images/profile/thanhtoanhoadon.png")}
+                    source={require("@assets/images/profile/thanhtoanhoadon.png")}
                     style={{ width: 50, height: 50 }}
                   />
                   <Text style={{ textAlign: "center" }}>
@@ -192,7 +192,7 @@ export default class ProfileMainScreen extends Component<
                   }}
                 >
                   <Image
-                    source={require("../images/profile/sales.png")}
+                    source={require("@assets/images/profile/sales.png")}
                     style={{ width: 50, height: 50 }}
                   />
                   <Text style={{ textAlign: "center" }}>FreeShip từ 99K</Text>

@@ -13,7 +13,7 @@ const ListItems = (props) => {
     <View style={styles.marginLR}>
       <View style={[styles.swapperView, styles.shadowBox]}>
         <Image
-          source={require("../images/goodsItemData/item2.jpg")}
+          source={require("@assets/images/goodsItemData/item2.jpg")}
           style={{ height: 70, width: 50, marginLeft: 15 }}
           resizeMode="cover"
         />

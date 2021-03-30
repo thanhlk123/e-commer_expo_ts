@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,14 +12,14 @@ import { FontAwesome, AntDesign } from "@expo/vector-icons";
 
 // export default function RenderItemChoosed(props) {
 //     return (
-export default class Counter extends Component {
+export default class Counter extends Component<any> {
   constructor(props) {
     super(props);
   }
 
   render() {
-      const { val, PlusItem, MinusItem } = this.props;
-      console.log(this.props)
+    const { val }: any = this.props;
+    console.log(this.props);
 
     return (
       <View style={[styles.containerItem, styles.shadowBox]}>
@@ -31,7 +31,7 @@ export default class Counter extends Component {
           }}
         >
           <Image
-            source={require("../../images/goodsItemData/item2.jpg")}
+            source={require("@assets/images/goodsItemData/item2.jpg")}
             style={{ height: 127, width: 100 }}
             resizeMode="cover"
           />
@@ -79,7 +79,7 @@ export default class Counter extends Component {
           >
             <TouchableOpacity
               style={{ height: 20, width: 20, borderRadius: 10 }}
-              onPress={() => MinusItem(val  - 1) }
+              onPress={() => {}}
             >
               <AntDesign name="minuscircleo" size={18} color="blue" />
             </TouchableOpacity>
@@ -92,14 +92,14 @@ export default class Counter extends Component {
                 borderWidth: 1,
                 textAlign: "center",
                 textAlignVertical: "center",
+                fontSize: 20,
               }}
-              size={20}
             >
               {val}
             </Text>
             <TouchableOpacity
               style={{ height: 20, width: 20, borderRadius: 10 }}
-              onPress={() => PlusItem(val + 1)}
+              onPress={() => {}}
             >
               <AntDesign name="pluscircleo" size={18} color="blue" />
             </TouchableOpacity>

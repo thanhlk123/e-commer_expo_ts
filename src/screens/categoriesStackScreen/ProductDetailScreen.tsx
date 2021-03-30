@@ -10,58 +10,58 @@ const ListSimilarProducts = [
     id: 1,
     price: "60.000₫",
     productTitle: "[Mã WAXANH22 giảm 15% đơn hàng 150k] Quần xinh đẹp",
-    productImg: require('../images/ProductsDetail/bag-1.jpg')
+    productImg: require('@assets/images/ProductsDetail/bag-1.jpg')
   },
   {
     id: 2,
     price: "20.000₫",
     productTitle: "[Mã WAXANH22 giảm 15% đơn hàng 150k] Quần xinh đẹp",
-    productImg: require('../images/ProductsDetail/bag-1.jpg')
+    productImg: require('@assets/images/ProductsDetail/bag-1.jpg')
   },
   {
     id: 3,
     price: "40.000₫",
     productTitle: "[Mã WAXANH22 giảm 15% đơn hàng 150k] Quần xinh đẹp",
-    productImg: require('../images/ProductsDetail/bag-1.jpg')
+    productImg: require('@assets/images/ProductsDetail/bag-1.jpg')
   },
   {
     id: 5,
     price: "60.000₫",
     productTitle: "[Mã WAXANH22 giảm 15% đơn hàng 150k] Quần xinh đẹp",
-    productImg: require('../images/ProductsDetail/bag-1.jpg')
+    productImg: require('@assets/images/ProductsDetail/bag-1.jpg')
   },
   {
     id: 6,
     price: "80.000₫",
     productTitle: "[Mã WAXANH22 giảm 15% đơn hàng 150k] Quần xinh đẹp",
-    productImg: require('../images/ProductsDetail/bag-1.jpg')
+    productImg: require('@assets/images/ProductsDetail/bag-1.jpg')
   }
 ]
 
 const dataSlide = [
   {
     id: 1,
-    imgUrl: require('../images/ProductsDetail/bag-1.jpg')
+    imgUrl: require('@assets/images/ProductsDetail/bag-1.jpg')
   },
   {
     id: 2,
-    imgUrl: require('../images/ProductsDetail/bag-2.jpg')
+    imgUrl: require('@assets/images/ProductsDetail/bag-2.jpg')
   },
   {
     id: 3,
-    imgUrl: require('../images/ProductsDetail/bag-3.jpg')
+    imgUrl: require('@assets/images/ProductsDetail/bag-3.jpg')
   },
   {
     id: 4,
-    imgUrl: require('../images/ProductsDetail/bag-4.jpg')
+    imgUrl: require('@assets/images/ProductsDetail/bag-4.jpg')
   },
   {
     id: 5,
-    imgUrl: require('../images/ProductsDetail/bag-1.jpg')
+    imgUrl: require('@assets/images/ProductsDetail/bag-1.jpg')
   },
   {
     id: 6,
-    imgUrl: require('../images/ProductsDetail/bag-1.jpg')
+    imgUrl: require('@assets/images/ProductsDetail/bag-1.jpg')
   }
 ]
 const ListOfSize = [
@@ -255,17 +255,17 @@ const CommentOfCustomer = (data) => {
               <TouchableOpacity style={{ margin: 5, flex: 1 }}>
                 <Image style={{ width: 75, height: 96 }}
                   resizeMode="contain"
-                  source={require('../images/ProductsDetail/bag-2.jpg')} />
+                  source={require('@assets/images/ProductsDetail/bag-2.jpg')} />
               </TouchableOpacity>
               <TouchableOpacity style={{ margin: 5, flex: 1 }}>
                 <Image style={{ width: 75, height: 96 }}
                   resizeMode="contain"
-                  source={require('../images/ProductsDetail/bag-2.jpg')} />
+                  source={require('@assets/images/ProductsDetail/bag-2.jpg')} />
               </TouchableOpacity>
               <TouchableOpacity style={{ margin: 5, flex: 1 }}>
                 <Image style={{ width: 75, height: 96 }}
                   resizeMode="contain"
-                  source={require('../images/ProductsDetail/bag-2.jpg')} />
+                  source={require('@assets/images/ProductsDetail/bag-2.jpg')} />
               </TouchableOpacity>
             </View>
 
@@ -427,28 +427,28 @@ export default class ProductDetailScreen extends Component<{}, ScreenMainProps> 
                   <Image
                     style={{ width: 75, height: 96 }}
                     resizeMode="contain"
-                    source={require("../images/ProductsDetail/bag-1.jpg")}
+                    source={require("@assets/images/ProductsDetail/bag-1.jpg")}
                   />
                 </TouchableOpacity>
                 <TouchableOpacity style={{ margin: 5, flex: 1 }}>
                   <Image
                     style={{ width: 75, height: 96 }}
                     resizeMode="contain"
-                    source={require("../images/ProductsDetail/bag-2.jpg")}
+                    source={require("@assets/images/ProductsDetail/bag-2.jpg")}
                   />
                 </TouchableOpacity>
                 <TouchableOpacity style={{ margin: 5, flex: 1 }}>
                   <Image
                     style={{ width: 75, height: 96 }}
                     resizeMode="contain"
-                    source={require("../images/ProductsDetail/bag-3.jpg")}
+                    source={require("@assets/images/ProductsDetail/bag-3.jpg")}
                   />
                 </TouchableOpacity>
                 <TouchableOpacity style={{ margin: 5, flex: 1 }}>
                   <Image
                     style={{ width: 75, height: 96 }}
                     resizeMode="contain"
-                    source={require("../images/ProductsDetail/bag-4.jpg")}
+                    source={require("@assets/images/ProductsDetail/bag-4.jpg")}
                   />
 
                   <View

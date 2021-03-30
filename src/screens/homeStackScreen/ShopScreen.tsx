@@ -53,7 +53,7 @@ class ShopScreen extends Component<{navigation: any}, {}> {
               onPress={()=>{this.props.navigation.navigate('Categories',{screen:'ListCategories'})}}
             >
               <Image
-                source={require('../images/shops/shop1.jpg')}
+                source={require('@assets/images/shops/shop1.jpg')}
                 style={styles.imgShop}
               />
               <Text style={styles.shopName}>Winter Style Sorted</Text>

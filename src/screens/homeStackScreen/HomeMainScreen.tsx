@@ -28,7 +28,7 @@ const RenderSale = (props) => {
         style={[styles.saleButton, styles.centerItem]}
       >
         <Image
-          source={require("../images/sale/sale.jpg")}
+          source={require("@assets/images/sale/sale.jpg")}
           resizeMode="cover"
           style={[styles.renderSaleImg]}
         />
@@ -97,7 +97,7 @@ const RenderTodayPick = () => {
         }}
       >
         <Image
-          source={require("../images/today/today.jpg")}
+          source={require("@assets/images/today/today.jpg")}
           resizeMode="cover"
           style={{ width: "100%", height: "100%" }}
         />

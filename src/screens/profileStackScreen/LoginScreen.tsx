@@ -54,7 +54,7 @@ export default class LoginScreen extends React.Component<
       <View style={{ flex: 1 }}>
         <View style={styles.container}>
           <Image
-            source={require("../images/loginPage/login2.jpg")}
+            source={require("@assets/images/loginPage/login2.jpg")}
             style={{ width: width, height: height * 0.5 }}
             resizeMode="contain"
           />
@@ -87,7 +87,7 @@ export default class LoginScreen extends React.Component<
                   ]}
                 >
                   <Image
-                    source={require("../images/loginPage/loginGG.png")}
+                    source={require("@assets/images/loginPage/loginGG.png")}
                     style={{ width: 20, height: 20 }}
                     resizeMode="contain"
                   />
@@ -129,7 +129,7 @@ export default class LoginScreen extends React.Component<
                   ]}
                 >
                   <Image
-                    source={require("../images/loginPage/phonenumber.png")}
+                    source={require("@assets/images/loginPage/phonenumber.png")}
                     style={{ width: 20, height: 20 }}
                     resizeMode="contain"
                   />

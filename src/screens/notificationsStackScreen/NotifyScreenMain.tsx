@@ -8,7 +8,7 @@ const notifyData = [
   {
     id: "1",
     title: "Click săn ngay mã Freeship đơn 0đ",
-    contentImg: require('../images/Notify/promot.png'),
+    contentImg: require('@assets/images/Notify/promot.png'),
     content: {
       icon1: "require('')",
       contentText: "Cả nhà ơi! Mã Miễn Phí Vận Chuyển sẽ hết hạn vào 23h59 ngày 16/07/2020, sử dụng ngay nhé",
@@ -19,7 +19,7 @@ const notifyData = [
   {
     id: "2",
     title: "Điện tử: Tưng bừng ngày hội khai trường",
-    contentImg: require('../images/Notify/sale_Laptop_1.png'),
+    contentImg: require('@assets/images/Notify/sale_Laptop_1.png'),
     content: {
       icon1: "require('')",
       contentText: "Cả nhà ơi! Mã Miễn Phí Vận Chuyển sẽ hết hạn vào 23h59 ngày 16/07/2020, sử dụng ngay nhé",
@@ -30,7 +30,7 @@ const notifyData = [
   {
     id: "3",
     title: "Điện tử: Tưng bừng ngày hội khai trường",
-    contentImg: require('../images/Notify/sale_Laptop.png'),
+    contentImg: require('@assets/images/Notify/sale_Laptop.png'),
     content: {
       icon1: "require('')",
       contentText: "Cả nhà ơi! Mã Miễn Phí Vận Chuyển sẽ hết hạn vào 23h59 ngày 16/07/2020, sử dụng ngay nhé",
@@ -41,7 +41,7 @@ const notifyData = [
   {
     id: "4",
     title: "Điện tử: Tưng bừng ngày hội khai trường",
-    contentImg: require('../images/Notify/sale_Laptop_2.png'),
+    contentImg: require('@assets/images/Notify/sale_Laptop_2.png'),
     content: {
       icon1: "require('')",
       contentText: "Cả nhà ơi! Mã Miễn Phí Vận Chuyển sẽ hết hạn vào 23h59 ngày 16/07/2020, sử dụng ngay nhé",
@@ -52,7 +52,7 @@ const notifyData = [
   {
     id: "5",
     title: "Mua sắm: Đến ngày lại lên",
-    contentImg: require('../images/Notify/sale_Laptop_2.png'),
+    contentImg: require('@assets/images/Notify/sale_Laptop_2.png'),
     content: {
       icon1: "require('')",
       contentText: "Hãy đến với chúng tôi. 1 ngày duy nhất",
@@ -63,7 +63,7 @@ const notifyData = [
   {
     id: "6",
     title: "Điện tử: Tưng bừng ngày hội khai trường",
-    contentImg: require('../images/Notify/sale_Laptop_3.png'),
+    contentImg: require('@assets/images/Notify/sale_Laptop_3.png'),
     content: {
       icon1: "require('')",
       contentText: "Cả nhà ơi! Mã Miễn Phí Vận Chuyển sẽ hết hạn vào 23h59 ngày 16/07/2020, sử dụng ngay nhé",
@@ -74,7 +74,7 @@ const notifyData = [
   {
     id: "7",
     title: "Điện tử: Tưng bừng ngày hội khai trường",
-    contentImg: require('../images/Notify/shopee_Sale.png'),
+    contentImg: require('@assets/images/Notify/shopee_Sale.png'),
     content: {
       icon1: "require('')",
       contentText: "Cả nhà ơi! Mã Miễn Phí Vận Chuyển sẽ hết hạn vào 23h59 ngày 16/07/2020, sử dụng ngay nhé",
@@ -85,7 +85,7 @@ const notifyData = [
   {
     id: "8",
     title: "Điện tử: Tưng bừng ngày hội khai trường",
-    contentImg: require('../images/Notify/shopee_Sale_1.png'),
+    contentImg: require('@assets/images/Notify/shopee_Sale_1.png'),
     content: {
       icon1: "require('')",
       contentText: "Cả nhà ơi! Mã Miễn Phí Vận Chuyển sẽ hết hạn vào 23h59 ngày 16/07/2020, sử dụng ngay nhé",
@@ -96,7 +96,7 @@ const notifyData = [
   {
     id: "9",
     title: "Điện tử: Tưng bừng ngày hội khai trường",
-    contentImg: require('../images/Notify/shopee_Sale_1.png'),
+    contentImg: require('@assets/images/Notify/shopee_Sale_1.png'),
     content: {
       icon1: "require('')",
       contentText: "Cả nhà ơi! Mã Miễn Phí Vận Chuyển sẽ hết hạn sớm",
@@ -107,7 +107,7 @@ const notifyData = [
   {
     id: "10",
     title: "Điện tử: Tôi đang học react native",
-    contentImg: require('../images/Notify/sale_Laptop_2.png'),
+    contentImg: require('@assets/images/Notify/sale_Laptop_2.png'),
     content: {
       icon1: "require('')",
       contentText: "Cả nhà ơi! Mã Miễn Phí Vận Chuyển sẽ hết hạn vào 23h59 ngày 16/07/2020, sử dụng ngay nhé",

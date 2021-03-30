@@ -34,31 +34,31 @@ const RenderSalesShop = (props) => {
 };
 const salesProgramData = [
   {
-    imgUrl: require("../images/sale/Sales_Screen/bag.jpg"),
+    imgUrl: require("@assets/images/sale/Sales_Screen/bag.jpg"),
     details: " 30-50% Off",
   },
   {
-    imgUrl: require("../images/sale/Sales_Screen/clothes.jpg"),
+    imgUrl: require("@assets/images/sale/Sales_Screen/clothes.jpg"),
     details: "Up to 60% Off",
   },
   {
-    imgUrl: require("../images/sale/Sales_Screen/khan_quang_co.jpg"),
+    imgUrl: require("@assets/images/sale/Sales_Screen/khan_quang_co.jpg"),
     details: " 30-50% Off",
   },
   {
-    imgUrl: require("../images/sale/Sales_Screen/phu_kien.jpg"),
+    imgUrl: require("@assets/images/sale/Sales_Screen/phu_kien.jpg"),
     details: "Up to 30% Off",
   },
   {
-    imgUrl: require("../images/sale/Sales_Screen/phu_kien_women.jpg"),
+    imgUrl: require("@assets/images/sale/Sales_Screen/phu_kien_women.jpg"),
     details: " 30-50% Off",
   },
   {
-    imgUrl: require("../images/sale/Sales_Screen/Sales_jacket.png"),
+    imgUrl: require("@assets/images/sale/Sales_Screen/Sales_jacket.png"),
     details: " 40-70% Off",
   },
   {
-    imgUrl: require("../images/sale/Sales_Screen/Sales_Shoes.png"),
+    imgUrl: require("@assets/images/sale/Sales_Screen/Sales_Shoes.png"),
     details: " 30-50% Off",
   },
 ];
@@ -106,7 +106,7 @@ export default class SalesScreen extends Component<{ navigation: any }, {}> {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{ marginBottom: 30 }}>
               <RenderSalesShop
-                imgUrl={require("../images/sale/Sales_Screen/fashionShop.jpg")}
+                imgUrl={require("@assets/images/sale/Sales_Screen/fashionShop.jpg")}
                 navigation={this.props.navigation}
               />
               <View style={styles.centerItem}>
@@ -120,7 +120,7 @@ export default class SalesScreen extends Component<{ navigation: any }, {}> {
               />
 
               <RenderSalesShop
-                imgUrl={require("../images/sale/Sales_Screen/fashionShop1.jpg")}
+                imgUrl={require("@assets/images/sale/Sales_Screen/fashionShop1.jpg")}
                 navigation={this.props.navigation}
               />
               <View style={styles.centerItem}>
@@ -132,7 +132,7 @@ export default class SalesScreen extends Component<{ navigation: any }, {}> {
                 navigation={this.props.navigation}
               />
               <RenderSalesShop
-                imgUrl={require("../images/sale/Sales_Screen/fashionShop3.jpg")}
+                imgUrl={require("@assets/images/sale/Sales_Screen/fashionShop3.jpg")}
                 navigation={this.props.navigation}
               />
               <View style={styles.centerItem}>

@@ -14,7 +14,7 @@ import { Input, Button, Icon } from "react-native-elements";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
-const BG_IMAGE = require("../images/login.jpg");
+const BG_IMAGE = require("@assets/images/login.jpg");
 
 // Enable LayoutAnimation on Android
 UIManager.setLayoutAnimationEnabledExperimental &&
