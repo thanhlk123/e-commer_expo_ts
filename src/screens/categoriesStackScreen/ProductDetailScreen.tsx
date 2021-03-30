@@ -286,33 +286,40 @@ const CommentOfCustomer = (data) => {
     </View>
   )
 }
-export default class ProductDetailScreen extends Component {
+
+type ScreenMainProps = {
+  activeIndex: number;
+  sizeIndex: number;
+};
+export default class ProductDetailScreen extends Component<{}, ScreenMainProps> {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       activeIndex: 0,
-      sizeIndex: 0
-    }
+      sizeIndex: 0,
+    };
   }
 
   _changeActiveIndex = (index, func) => {
-    this.setState({ activeIndex: index }, func)
-  }
+    this.setState({ activeIndex: index }, func);
+  };
 
   _changeSizeIndex = (index, func) => {
-    this.setState({ sizeIndex: index }, func)
-  }
+    this.setState({ sizeIndex: index }, func);
+  };
   render() {
     return (
       <SafeAreaView style={[styles.container]}>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={{ width: "90%" }}>
-
+          style={{ width: "90%" }}
+        >
           {/* Product Image */}
           <Carousel
-            layout={'default'}
-            ref={(c) => { this._carousel = c; }}
+            layout={"default"}
+            ref={(c) => {
+              this._carousel = c;
+            }}
             keyExtractor={(item, index) => `${item.id}`}
             data={dataSlide}
             loop={false}
@@ -321,7 +328,7 @@ export default class ProductDetailScreen extends Component {
             itemHeight={250}
             sliderWidth={0.9 * width}
             enableSnap={true}
-            onSnapToItem={index => this.setState({ activeIndex: index })}
+            onSnapToItem={(index) => this.setState({ activeIndex: index })}
             scrollEndDragDebounceValue={1000}
           />
 
@@ -331,18 +338,21 @@ export default class ProductDetailScreen extends Component {
               horizontal={true}
               style={styles.w_100}
               showsHorizontalScrollIndicator={false}
-              pagingEnabled={true}>
-
-              {dataSlide.length ? dataSlide.map((data, index) => (
-                <ProductThumnail
-                  url={data.imgUrl}
-                  index={index}
-                  slide={this}
-                  onPressX={this._changeActiveIndex}
-                  activeIndex={this.state.activeIndex} />
-              ))
-                :
-                <View />}
+              pagingEnabled={true}
+            >
+              {dataSlide.length ? (
+                dataSlide.map((data, index) => (
+                  <ProductThumnail
+                    url={data.imgUrl}
+                    index={index}
+                    slide={this}
+                    onPressX={this._changeActiveIndex}
+                    activeIndex={this.state.activeIndex}
+                  />
+                ))
+              ) : (
+                <View />
+              )}
             </ScrollView>
           </View>
 
@@ -361,55 +371,99 @@ export default class ProductDetailScreen extends Component {
           <ProductDesc />
 
           {/* Product Size */}
-          <ProductSize sizeSelected={this.state.sizeIndex} onPressX={this._changeSizeIndex} />
+          <ProductSize
+            sizeSelected={this.state.sizeIndex}
+            onPressX={this._changeSizeIndex}
+          />
 
           {/* Customer Comment */}
-          <View >
-            <View style={{ flexDirection: 'row', paddingVertical: 10, borderBottomColor: 'gray', borderBottomWidth: 0.5, alignItems: "center" }}>
+          <View>
+            <View
+              style={{
+                flexDirection: "row",
+                paddingVertical: 10,
+                borderBottomColor: "gray",
+                borderBottomWidth: 0.5,
+                alignItems: "center",
+              }}
+            >
               <View style={{ flex: 1 }}>
-                <Text style={{ fontWeight: '400', fontSize: 16, paddingBottom: 5 }}>ĐÁNH GIÁ SẢN PHẨM</Text>
-                <View style={{ flexDirection: 'row' }}>
+                <Text
+                  style={{ fontWeight: "400", fontSize: 16, paddingBottom: 5 }}
+                >
+                  ĐÁNH GIÁ SẢN PHẨM
+                </Text>
+                <View style={{ flexDirection: "row" }}>
                   <FontAwesome name="star" size={16} color="#FFAA43" />
                   <FontAwesome name="star" size={16} color="#FFAA43" />
                   <FontAwesome name="star" size={16} color="#FFAA43" />
-                  <FontAwesome name="star-half-empty" size={16} color="#FFAA43" />
+                  <FontAwesome
+                    name="star-half-empty"
+                    size={16}
+                    color="#FFAA43"
+                  />
                   <FontAwesome name="star-o" size={16} color="#FFAA43" />
                   <Text style={{ paddingRight: 5 }}>4.9/5</Text>
                   <Text>(235 đánh giá)</Text>
                 </View>
               </View>
               <View style={{ width: 100 }}>
-                <Text>Xem tất cả <AntDesign name="right" size={16} color="black" /></Text>
+                <Text>
+                  Xem tất cả <AntDesign name="right" size={16} color="black" />
+                </Text>
               </View>
             </View>
 
-            <View style={{ paddingVertical: 10, borderBottomWidth: 0.5, borderBottomColor: "gray" }}>
-              <Text style={{ fontSize: 16 }}>
-                Hình ảnh từ người mua
-              </Text>
-              <View style={{ flexDirection: 'row' }}>
+            <View
+              style={{
+                paddingVertical: 10,
+                borderBottomWidth: 0.5,
+                borderBottomColor: "gray",
+              }}
+            >
+              <Text style={{ fontSize: 16 }}>Hình ảnh từ người mua</Text>
+              <View style={{ flexDirection: "row" }}>
                 <TouchableOpacity style={{ margin: 5, flex: 1 }}>
-                  <Image style={{ width: 75, height: 96 }}
+                  <Image
+                    style={{ width: 75, height: 96 }}
                     resizeMode="contain"
-                    source={require('../images/ProductsDetail/bag-1.jpg')} />
+                    source={require("../images/ProductsDetail/bag-1.jpg")}
+                  />
                 </TouchableOpacity>
                 <TouchableOpacity style={{ margin: 5, flex: 1 }}>
-                  <Image style={{ width: 75, height: 96 }}
+                  <Image
+                    style={{ width: 75, height: 96 }}
                     resizeMode="contain"
-                    source={require('../images/ProductsDetail/bag-2.jpg')} />
+                    source={require("../images/ProductsDetail/bag-2.jpg")}
+                  />
                 </TouchableOpacity>
                 <TouchableOpacity style={{ margin: 5, flex: 1 }}>
-                  <Image style={{ width: 75, height: 96 }}
+                  <Image
+                    style={{ width: 75, height: 96 }}
                     resizeMode="contain"
-                    source={require('../images/ProductsDetail/bag-3.jpg')} />
+                    source={require("../images/ProductsDetail/bag-3.jpg")}
+                  />
                 </TouchableOpacity>
                 <TouchableOpacity style={{ margin: 5, flex: 1 }}>
-                  <Image style={{ width: 75, height: 96 }}
+                  <Image
+                    style={{ width: 75, height: 96 }}
                     resizeMode="contain"
-                    source={require('../images/ProductsDetail/bag-4.jpg')} />
+                    source={require("../images/ProductsDetail/bag-4.jpg")}
+                  />
 
-                  <View style={{ position: "absolute", top: 0, width: 75, height: 96, opacity: 0.5, backgroundColor: "gray", justifyContent: "center", alignItems: "center" }}>
-                    <Text style={{ color: 'white', fontSize: 16 }}>+44</Text>
+                  <View
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      width: 75,
+                      height: 96,
+                      opacity: 0.5,
+                      backgroundColor: "gray",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Text style={{ color: "white", fontSize: 16 }}>+44</Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -420,7 +474,9 @@ export default class ProductDetailScreen extends Component {
 
             <View style={{ marginVertical: 5 }}>
               <TouchableOpacity style={{ alignItems: "center" }}>
-                <Text style={{ fontSize: 14, color: 'red' }}>Xem Tất Cả (851)</Text>
+                <Text style={{ fontSize: 14, color: "red" }}>
+                  Xem Tất Cả (851)
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -430,15 +486,17 @@ export default class ProductDetailScreen extends Component {
             <View style={{ flexDirection: "row" }}>
               <Text style={styles.similarProductText}>Sản phẩm tương tự</Text>
               <TouchableOpacity style={{ width: 100 }}>
-                <Text style={styles.seeAllText}>Xem tất cả <AntDesign name="right" size={14} color="red" /></Text>
+                <Text style={styles.seeAllText}>
+                  Xem tất cả <AntDesign name="right" size={14} color="red" />
+                </Text>
               </TouchableOpacity>
             </View>
 
             <SimilarProduct />
           </View>
         </ScrollView>
-      </SafeAreaView >
-    )
+      </SafeAreaView>
+    );
   }
 }
 

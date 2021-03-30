@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
   StyleSheet,
   View,
   Text,
-  ImageBackground,
   Dimensions,
   LayoutAnimation,
   UIManager,
   KeyboardAvoidingView,
-} from 'react-native';
-import { Input, Button, Icon } from 'react-native-elements';
+} from "react-native";
+import { Input, Button, Icon } from "react-native-elements";
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const SCREEN_HEIGHT = Dimensions.get('window').height;
+const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCREEN_HEIGHT = Dimensions.get("window").height;
 
-const BG_IMAGE = require('../images/login.jpg');
+const BG_IMAGE = require("../images/login.jpg");
 
 // Enable LayoutAnimation on Android
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -38,8 +37,8 @@ export default class RegisterScreen extends Component {
     super(props);
 
     this.state = {
-      phoneNumber: '',
-      password: '',
+      phoneNumber: "",
+      password: "",
       selectedCategory: 0,
       isLoading: false,
       isPhoneNumberValid: true,
@@ -67,28 +66,32 @@ export default class RegisterScreen extends Component {
   }
 
   login() {
-    const { phoneNumber, password } = this.state;
+    const { phoneNumber, password }: any = this.state;
     this.setState({ isLoading: true });
     // Simulate an API call
     setTimeout(() => {
       LayoutAnimation.easeInEaseOut();
       this.setState({
         isLoading: false,
-        isPhoneNumberValid: this.validatePhoneNumber(phoneNumber) || this.phoneNumberInput.shake(),
+        isPhoneNumberValid:
+          this.validatePhoneNumber(phoneNumber) ||
+          this.phoneNumberInput.shake(),
         isPasswordValid: password.length >= 8 || this.passwordInput.shake(),
       });
     }, 1500);
   }
 
   signUp() {
-    const { phoneNumber, password, passwordConfirmation } = this.state;
+    const { phoneNumber, password, passwordConfirmation }: any = this.state;
     this.setState({ isLoading: true });
     // Simulate an API call
     setTimeout(() => {
       LayoutAnimation.easeInEaseOut();
       this.setState({
         isLoading: false,
-        isPhoneNumberValid: this.validatePhoneNumber(phoneNumber) || this.phoneNumberInput.shake(),
+        isPhoneNumberValid:
+          this.validatePhoneNumber(phoneNumber) ||
+          this.phoneNumberInput.shake(),
         isPasswordValid: password.length >= 8 || this.passwordInput.shake(),
         isConfirmationValid:
           password === passwordConfirmation || this.confirmationInput.shake(),
@@ -106,27 +109,27 @@ export default class RegisterScreen extends Component {
       phoneNumber,
       password,
       passwordConfirmation,
-    } = this.state;
+    }: any = this.state;
     const isLoginPage = selectedCategory === 0;
     const isSignUpPage = selectedCategory === 1;
 
     return (
       <View style={styles.container}>
-        <View  style={styles.bgImage}>
+        <View style={styles.bgImage}>
           <View>
             <KeyboardAvoidingView
               contentContainerStyle={styles.loginContainer}
               behavior="position"
             >
               <View style={styles.titleContainer}>
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: "row" }}>
                   <Text style={styles.titleText}>STRAP</Text>
                 </View>
                 <View style={{ marginTop: -10, marginLeft: 10 }}>
                   <Text style={styles.titleText}>ECOMMERCE</Text>
                 </View>
               </View>
-              <View style={{ flexDirection: 'row' }}>
+              <View style={{ flexDirection: "row" }}>
                 <Button
                   disabled={isLoading}
                   type="clear"
@@ -137,7 +140,7 @@ export default class RegisterScreen extends Component {
                     styles.categoryText,
                     isLoginPage && styles.selectedCategoryText,
                   ]}
-                  title={'Login'}
+                  title={"Login"}
                 />
                 <Button
                   disabled={isLoading}
@@ -149,7 +152,7 @@ export default class RegisterScreen extends Component {
                     styles.categoryText,
                     isSignUpPage && styles.selectedCategoryText,
                   ]}
-                  title={'Sign up'}
+                  title={"Sign up"}
                 />
               </View>
               <View style={styles.rowSelector}>
@@ -164,7 +167,7 @@ export default class RegisterScreen extends Component {
                       type="MaterialIcons"
                       color="rgba(0, 0, 0, 0.38)"
                       size={25}
-                      style={{ backgroundColor: 'transparent' }}
+                      style={{ backgroundColor: "transparent" }}
                     />
                   }
                   value={phoneNumber}
@@ -172,18 +175,20 @@ export default class RegisterScreen extends Component {
                   autoFocus={false}
                   autoCapitalize="none"
                   autoCorrect={false}
-                  keyboardType="number"
+                  keyboardType="numeric"
                   returnKeyType="next"
                   inputStyle={{ marginLeft: 10 }}
-                  placeholder={'Số điện thoại'}
+                  placeholder={"Số điện thoại"}
                   containerStyle={{
-                    borderBottomColor: 'rgba(0, 0, 0, 0.38)',
+                    borderBottomColor: "rgba(0, 0, 0, 0.38)",
                   }}
-                  ref={input => (this.phoneNumberInput = input)}
+                  ref={(input) => (this.phoneNumberInput = input)}
                   onSubmitEditing={() => this.passwordInput.focus()}
-                  onChangeText={phoneNumber => this.setState({ phoneNumber })}
+                  onChangeText={(phoneNumber) => this.setState({ phoneNumber })}
                   errorMessage={
-                    isPhoneNumberValid ? null : 'Please enter a valid phone number address'
+                    isPhoneNumberValid
+                      ? undefined
+                      : "Please enter a valid phone number address"
                   }
                 />
                 <Input
@@ -193,7 +198,7 @@ export default class RegisterScreen extends Component {
                       type="simple-line-icon"
                       color="rgba(0, 0, 0, 0.38)"
                       size={25}
-                      style={{ backgroundColor: 'transparent' }}
+                      style={{ backgroundColor: "transparent" }}
                     />
                   }
                   value={password}
@@ -201,23 +206,23 @@ export default class RegisterScreen extends Component {
                   autoCapitalize="none"
                   autoCorrect={false}
                   secureTextEntry={true}
-                  returnKeyType={isSignUpPage ? 'next' : 'done'}
+                  returnKeyType={isSignUpPage ? "next" : "done"}
                   blurOnSubmit={true}
                   containerStyle={{
                     marginTop: 16,
-                    borderBottomColor: 'rgba(0, 0, 0, 0.38)',
+                    borderBottomColor: "rgba(0, 0, 0, 0.38)",
                   }}
                   inputStyle={{ marginLeft: 10 }}
-                  placeholder={'Mật khẩu'}
-                  ref={input => (this.passwordInput = input)}
+                  placeholder={"Mật khẩu"}
+                  ref={(input) => (this.passwordInput = input)}
                   onSubmitEditing={() =>
                     isSignUpPage ? this.confirmationInput.focus() : this.login()
                   }
-                  onChangeText={password => this.setState({ password })}
+                  onChangeText={(password) => this.setState({ password })}
                   errorMessage={
                     isPasswordValid
-                      ? null
-                      : 'Please enter at least 8 characters'
+                      ? undefined
+                      : "Please enter at least 8 characters"
                   }
                 />
                 {isSignUpPage && (
@@ -228,7 +233,7 @@ export default class RegisterScreen extends Component {
                         type="simple-line-icon"
                         color="rgba(0, 0, 0, 0.38)"
                         size={25}
-                        style={{ backgroundColor: 'transparent' }}
+                        style={{ backgroundColor: "transparent" }}
                       />
                     }
                     value={passwordConfirmation}
@@ -237,23 +242,23 @@ export default class RegisterScreen extends Component {
                     autoCapitalize="none"
                     autoCorrect={false}
                     keyboardType="default"
-                    returnKeyType={'done'}
+                    returnKeyType={"done"}
                     blurOnSubmit={true}
                     containerStyle={{
                       marginTop: 16,
-                      borderBottomColor: 'rgba(0, 0, 0, 0.38)',
+                      borderBottomColor: "rgba(0, 0, 0, 0.38)",
                     }}
                     inputStyle={{ marginLeft: 10 }}
-                    placeholder={'Xác nhận mật khẩu'}
-                    ref={input => (this.confirmationInput = input)}
+                    placeholder={"Xác nhận mật khẩu"}
+                    ref={(input) => (this.confirmationInput = input)}
                     onSubmitEditing={this.signUp}
-                    onChangeText={passwordConfirmation =>
+                    onChangeText={(passwordConfirmation) =>
                       this.setState({ passwordConfirmation })
                     }
                     errorMessage={
                       isConfirmationValid
-                        ? null
-                        : 'Please enter the same password'
+                        ? undefined
+                        : "Please enter the same password"
                     }
                   />
                 )}
@@ -261,7 +266,7 @@ export default class RegisterScreen extends Component {
                   buttonStyle={styles.loginButton}
                   containerStyle={{ marginTop: 32, flex: 0 }}
                   activeOpacity={0.8}
-                  title={isLoginPage ? 'LOGIN' : 'SIGN UP'}
+                  title={isLoginPage ? "LOGIN" : "SIGN UP"}
                   onPress={isLoginPage ? this.login : this.signUp}
                   titleStyle={styles.loginTextButton}
                   loading={isLoading}
@@ -282,56 +287,56 @@ const styles = StyleSheet.create({
   },
   rowSelector: {
     height: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   selectorContainer: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   selected: {
-    position: 'absolute',
+    position: "absolute",
     borderRadius: 50,
     height: 0,
     width: 0,
     top: -5,
     borderRightWidth: 70,
     borderBottomWidth: 70,
-    borderColor: 'white',
-    backgroundColor: 'white',
+    borderColor: "white",
+    backgroundColor: "white",
   },
   loginContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   loginTextButton: {
     fontSize: 16,
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
   },
   loginButton: {
-    backgroundColor: '#171f8f',
+    backgroundColor: "#171f8f",
     borderRadius: 10,
     height: 50,
     width: 200,
   },
   titleContainer: {
     height: 150,
-    backgroundColor: '#f2f2f2',
-    justifyContent: 'center',
+    backgroundColor: "#f2f2f2",
+    justifyContent: "center",
   },
   formContainer: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     width: SCREEN_WIDTH - 30,
     borderRadius: 10,
     paddingTop: 32,
     paddingBottom: 32,
-    alignItems: 'center',
+    alignItems: "center",
   },
   loginText: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
   },
   bgImage: {
     flex: 1,
@@ -339,26 +344,26 @@ const styles = StyleSheet.create({
     left: 0,
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   categoryText: {
-    textAlign: 'center',
-    color: 'black',
+    textAlign: "center",
+    color: "black",
     fontSize: 24,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     opacity: 0.54,
   },
   selectedCategoryText: {
     opacity: 1,
   },
   titleText: {
-    color: 'black',
+    color: "black",
     fontSize: 30,
   },
   helpContainer: {
     height: 64,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
