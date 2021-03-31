@@ -15,6 +15,8 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 import TrendingsData from "@demoData/Trendings";
 import { styles } from "./common/Styles";
 import {RenderTopic} from './common/RenderTopic'
+import { navigationRef } from "RootNavigation";
+import { HOME_SEARCH_SCREEN } from "@constants/NavigationTypes";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -250,32 +252,6 @@ export default class HomeMainScreen extends Component<
         <View
           style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}
         >
-          {this.state.isSearching ? (
-            <View
-              style={[
-                {
-                  backgroundColor: "white",
-                  width: "100%",
-                  height: 40,
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                },
-                styles.shadowStyle,
-              ]}
-            >
-              <TextInput
-                style={{ width: "70%" }}
-                placeholder="Type somethings here..."
-                maxLength={30}
-                value={this.state.valueSearch}
-                onChangeText={(text) => this.setState({ valueSearch: text })}
-                onBlur={() => this.setState({ isSearching: false })}
-                underlineColorAndroid="transparent"
-              />
-              <SimpleLineIcons name="magnifier" color="black" size={18} />
-            </View>
-          ) : (
             <View
               style={[
                 {
@@ -304,13 +280,15 @@ export default class HomeMainScreen extends Component<
                   <Text>E-COMMERCE PRO</Text>
                 </View>
                 <TouchableOpacity
-                  onPress={() => this.setState({ isSearching: true })}
+                  onPress={() =>
+                    this.props.navigation.navigate(HOME_SEARCH_SCREEN)
+                  }
                 >
                   <SimpleLineIcons name="magnifier" color="black" size={18} />
                 </TouchableOpacity>
               </View>
             </View>
-          )}
+            
           <View style={{ flex: 1, alignItems: "center" }}>
             <ScrollView showsVerticalScrollIndicator={false}>
               <View style={{ marginBottom: 30 }}>

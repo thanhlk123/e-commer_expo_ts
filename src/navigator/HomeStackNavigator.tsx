@@ -5,6 +5,8 @@ import { FontAwesome } from "@expo/vector-icons";
 import HomeMainScreen from "@screens/homeStackScreen/HomeMainScreen";
 import ShopScreen from "@screens/homeStackScreen/ShopScreen";
 import SalesScreen from "@screens/homeStackScreen/SalesScreen";
+import HomeSearchScreen from "screens/homeStackScreen/SearchScreen/index";
+import {HOME_SEARCH_SCREEN} from "@constants/NavigationTypes";
 
 const HomeScreenStack = createStackNavigator();
 
@@ -61,6 +63,11 @@ export const HomeStackNavigator = () => {
         name="Shop"
         component={ShopScreen}
         options={salesScreenOptions()}
+      />
+      <HomeScreenStack.Screen
+        name={HOME_SEARCH_SCREEN}
+        component={HomeSearchScreen}
+        options={{headerShown: false}}
       />
     </HomeScreenStack.Navigator>
   );
