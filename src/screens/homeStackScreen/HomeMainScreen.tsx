@@ -7,19 +7,17 @@ import {
   ScrollView,
   Image,
   Dimensions,
-  SafeAreaView, 
+  SafeAreaView,
 } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
 import TrendingsData from "@demoData/Trendings";
 import { styles } from "./common/Styles";
-import {RenderTopic} from './common/RenderTopic'
+import { RenderTopic } from "./common/RenderTopic";
 import { navigationRef } from "RootNavigation";
 import { HOME_SEARCH_SCREEN } from "@constants/NavigationTypes";
 
 const { width, height } = Dimensions.get("screen");
-
-
 
 const RenderSale = (props) => {
   return (
@@ -251,7 +249,7 @@ export default class HomeMainScreen extends Component<
         <View
           style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}
         >
-          <View
+          <TouchableOpacity
             style={[
               {
                 backgroundColor: "white",
@@ -262,6 +260,7 @@ export default class HomeMainScreen extends Component<
               },
               styles.shadowStyle,
             ]}
+            onPress={() => this.props.navigation.navigate(HOME_SEARCH_SCREEN)}
           >
             <View
               style={[
@@ -286,7 +285,7 @@ export default class HomeMainScreen extends Component<
                 <SimpleLineIcons name="magnifier" color="black" size={18} />
               </TouchableOpacity>
             </View>
-          </View>
+          </TouchableOpacity>
 
           <View style={{ flex: 1, alignItems: "center" }}>
             <ScrollView showsVerticalScrollIndicator={false}>

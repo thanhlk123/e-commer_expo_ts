@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const demoListKeyword = [
   {
@@ -28,10 +29,13 @@ const demoListKeyword = [
 
 const HeaderSearchCommon = () => {
   const [keyword, setKeyword] = useState("");
-
+    const navigation = useNavigation();
   return (
     <Row>
-      <Ionicons name="arrow-back" size={24} color="white" />
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={24} color="white" />
+      </TouchableOpacity>
+
       <View style={{ flex: 1, marginLeft: 10 }}>
         <TextInput
           style={{
