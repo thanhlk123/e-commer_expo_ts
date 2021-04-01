@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import {
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  TextInput,
   FlatList,
   ScrollView,
   Image,
   Dimensions,
+  SafeAreaView, 
 } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
@@ -248,47 +247,47 @@ export default class HomeMainScreen extends Component<
   }
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1 }}>
         <View
           style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}
         >
+          <View
+            style={[
+              {
+                backgroundColor: "white",
+                width: "100%",
+                height: 40,
+                justifyContent: "center",
+                alignItems: "center",
+              },
+              styles.shadowStyle,
+            ]}
+          >
             <View
               style={[
-                {
-                  backgroundColor: "white",
-                  width: "100%",
-                  height: 40,
-                  justifyContent: "center",
-                  alignItems: "center",
-                },
-                styles.shadowStyle,
+                styles.centerItem,
+                { width: "90%", flexDirection: "row" },
               ]}
             >
               <View
-                style={[
-                  styles.centerItem,
-                  { width: "90%", flexDirection: "row" },
-                ]}
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
               >
-                <View
-                  style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Text>E-COMMERCE PRO</Text>
-                </View>
-                <TouchableOpacity
-                  onPress={() =>
-                    this.props.navigation.navigate(HOME_SEARCH_SCREEN)
-                  }
-                >
-                  <SimpleLineIcons name="magnifier" color="black" size={18} />
-                </TouchableOpacity>
+                <Text>E-COMMERCE VIP PRO</Text>
               </View>
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate(HOME_SEARCH_SCREEN)
+                }
+              >
+                <SimpleLineIcons name="magnifier" color="black" size={18} />
+              </TouchableOpacity>
             </View>
-            
+          </View>
+
           <View style={{ flex: 1, alignItems: "center" }}>
             <ScrollView showsVerticalScrollIndicator={false}>
               <View style={{ marginBottom: 30 }}>
@@ -303,7 +302,7 @@ export default class HomeMainScreen extends Component<
             </ScrollView>
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }
