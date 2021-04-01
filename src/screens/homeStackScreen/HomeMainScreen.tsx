@@ -10,6 +10,8 @@ import {
   SafeAreaView,
 } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 import TrendingsData from "@demoData/Trendings";
 import { styles } from "./common/Styles";
@@ -249,24 +251,25 @@ export default class HomeMainScreen extends Component<
         <View
           style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}
         >
-          <TouchableOpacity
+          <View
             style={[
               {
                 backgroundColor: "white",
                 width: "100%",
                 height: 40,
-                justifyContent: "center",
+                justifyContent: "space-between",
                 alignItems: "center",
+                flexDirection: "row",
               },
               styles.shadowStyle,
             ]}
-            onPress={() => this.props.navigation.navigate(HOME_SEARCH_SCREEN)}
           >
-            <View
+            <TouchableOpacity
               style={[
                 styles.centerItem,
-                { width: "90%", flexDirection: "row" },
+                { width: "80%", flexDirection: "row" },
               ]}
+              onPress={() => this.props.navigation.navigate(HOME_SEARCH_SCREEN)}
             >
               <View
                 style={{
@@ -277,15 +280,49 @@ export default class HomeMainScreen extends Component<
               >
                 <Text>E-COMMERCE VIP PRO</Text>
               </View>
-              <TouchableOpacity
-                onPress={() =>
-                  this.props.navigation.navigate(HOME_SEARCH_SCREEN)
-                }
+              <SimpleLineIcons name="magnifier" color="black" size={18} />
+            </TouchableOpacity>
+            <View style={{ paddingRight: 10 }}>
+              <AntDesign name="shoppingcart" size={24} color="black" />
+              <View
+                style={{
+                  position: "absolute",
+                  top: -5,
+                  right: 0,
+                  width: 14,
+                  height: 14,
+                  borderRadius: 7,
+                  backgroundColor: "red",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
               >
-                <SimpleLineIcons name="magnifier" color="black" size={18} />
-              </TouchableOpacity>
+                <Text style={{ color: "white", fontSize: 11 }}>9</Text>
+              </View>
             </View>
-          </TouchableOpacity>
+            <View style={{ paddingRight: 10 }}>
+              <Ionicons
+                name="chatbox-ellipses-outline"
+                size={24}
+                color="black"
+              />
+              <View
+                style={{
+                  position: "absolute",
+                  top: -5,
+                  right: 0,
+                  width: 14,
+                  height: 14,
+                  borderRadius: 7,
+                  backgroundColor: "red",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={{ color: "white", fontSize: 12 }}>9</Text>
+              </View>
+            </View>
+          </View>
 
           <View style={{ flex: 1, alignItems: "center" }}>
             <ScrollView showsVerticalScrollIndicator={false}>
