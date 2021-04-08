@@ -44,7 +44,7 @@ export default class Topic extends Component<
   }
 
   _setMaxHeight(event) {
-    let maxHeight = event.nativeEvent.layout.height + 20;
+    let maxHeight = event.nativeEvent.layout.height + 30;
     this.setState({
       maxHeight: maxHeight,
     });

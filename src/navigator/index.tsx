@@ -46,7 +46,7 @@ function BottomTabs() {
           ),
         }}
         name="Notifications"
-        component={ProfileStackNavigator}
+        component={NotificationsStackNavigator}
       />
       <Tab.Screen
         options={{
@@ -56,7 +56,7 @@ function BottomTabs() {
           ),
         }}
         name="Bag"
-        component={NotificationsStackNavigator}
+        component={BagStackNavigator}
       />
       <Tab.Screen
         options={{
@@ -66,7 +66,7 @@ function BottomTabs() {
           ),
         }}
         name="Profile"
-        component={BagStackNavigator}
+        component={ProfileStackNavigator}
       />
     </Tab.Navigator>
   );
