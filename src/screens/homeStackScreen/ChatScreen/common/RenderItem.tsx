@@ -28,6 +28,7 @@ const KimSoHuyn_Img = [
 ];
 
 const RenderItem = (item: any, navigation) => {
+  const randomImg = Math.floor(Math.random() * 4);
   return (
     <TouchableOpacity
       style={{
@@ -38,13 +39,16 @@ const RenderItem = (item: any, navigation) => {
         paddingVertical: 16,
       }}
       onPress={() => {
-        navigation.navigate(CHAT_SCREEN, { channel: item });
+        navigation.navigate(CHAT_SCREEN, {
+          url: KimSoHuyn_Img[randomImg].url,
+          name: item.name,
+        });
       }}
     >
       <View>
         <Image
           source={{
-            uri: KimSoHuyn_Img[Math.floor(Math.random() * 4)].url,
+            uri: KimSoHuyn_Img[randomImg].url,
           }}
           style={{ width: 60, height: 60, borderRadius: 30 }}
           resizeMode="cover"

@@ -341,7 +341,7 @@ const ChatScreen = () => {
   const navigation = useNavigation();
   const route: any = useRoute();
 
-  const { channel } = route.params;
+  const { url, name } = route.params;
 
   const [messages, setMessages] = useState<any>(demoMessageData);
   const [loadEarlier, setLoadEarlier] = useState(true);
@@ -454,10 +454,10 @@ const ChatScreen = () => {
   const renderQuickReplySend = () => <Text>{" custom send =>"}</Text>;
 
   const renderSend = (props: Send["props"]) => (
-     <Send {...props} containerStyle={{ justifyContent: "center" }}>
-       <MaterialIcons size={30} color={"tomato"} name={"send"} />
-     </Send>
-   );
+    <Send {...props} containerStyle={{ justifyContent: "center" }}>
+      <MaterialIcons size={30} color={"tomato"} name={"send"} />
+    </Send>
+  );
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#3b5f8a" }}>
@@ -469,7 +469,12 @@ const ChatScreen = () => {
           >
             <AntDesign name="arrowleft" size={24} color="#fff" />
           </TouchableOpacity>
-          <HeaderTitle>Chat</HeaderTitle>
+          <Image
+            source={{ uri: url }}
+            style={{ width: 50, height: 50, borderRadius: 25 }}
+            resizeMode="cover"
+          />
+          <Text style = {{color: "#fff", fontSize: 20, paddingLeft: 20}}>{name}</Text>
         </HeaderContainer>
         <GiftedChat
           messages={messages}
