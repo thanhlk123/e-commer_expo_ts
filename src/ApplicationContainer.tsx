@@ -1,15 +1,26 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
-import theme from '@theme/index';
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 // import AppNavigator from '@navigator/AppNavigator';
 import AppNavigator from "@navigator/index";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <PaperProvider theme={theme}>
       <AppNavigator />
-    </ThemeProvider>
+    </PaperProvider>
   );
 }
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "#5b3a70",
+    accent: "#50c878",
+    background: "#f7f9fb",
+  },
+};
 
 export default App;

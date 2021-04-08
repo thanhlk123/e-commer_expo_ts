@@ -20,7 +20,11 @@ import TodayPickComponent from "./common/TodayPickComponent";
 import LimitedSaleComponent from "./common/LimitedSaleComponent";
 import QcComponent from "./common/QcComponent";
 
-import { HOME_SEARCH_SCREEN } from "@constants/NavigationTypes";
+import {
+  HOME_SEARCH_SCREEN,
+  CHANNEL_CHAT_SCREEN,
+} from "@constants/NavigationTypes";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default class HomeMainScreen extends Component<
   { navigation: any },
@@ -71,14 +75,22 @@ export default class HomeMainScreen extends Component<
               <Feather name="search" size={24} color="#595959" />
             </TouchableOpacity>
 
-            <BtnSmall>
+            <BtnSmall
+              onPress={() =>
+                this.props.navigation.navigate(CHANNEL_CHAT_SCREEN)
+              }
+            >
               <AntDesign name="shoppingcart" size={24} color="#595959" />
               <PostTaggedContainer>
                 <Text style={{ color: "white", fontSize: 11 }}>9</Text>
               </PostTaggedContainer>
             </BtnSmall>
 
-            <BtnSmall>
+            <BtnSmall
+              onPress={() =>
+                this.props.navigation.navigate(CHANNEL_CHAT_SCREEN)
+              }
+            >
               <Ionicons
                 name="chatbox-ellipses-outline"
                 size={24}

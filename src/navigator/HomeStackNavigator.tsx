@@ -6,7 +6,13 @@ import HomeMainScreen from "screens/homeStackScreen/HomeScreen/index";
 import ShopScreen from "@screens/homeStackScreen/ShopScreen";
 import SalesScreen from "@screens/homeStackScreen/SalesScreen";
 import HomeSearchScreen from "screens/homeStackScreen/SearchScreen/index";
-import {HOME_SEARCH_SCREEN} from "@constants/NavigationTypes";
+import ChannelChatScreen from "@screens/homeStackScreen/ChatScreen/ChannelScreen"
+import ChatScreen from "@screens/homeStackScreen/ChatScreen/ChatScreen";
+import {
+  HOME_SEARCH_SCREEN,
+  CHANNEL_CHAT_SCREEN,
+  CHAT_SCREEN,
+} from "@constants/NavigationTypes";
 
 const HomeScreenStack = createStackNavigator();
 
@@ -67,7 +73,17 @@ export const HomeStackNavigator = () => {
       <HomeScreenStack.Screen
         name={HOME_SEARCH_SCREEN}
         component={HomeSearchScreen}
-        options={{headerShown: false}}
+        options={{ headerShown: false }}
+      />
+      <HomeScreenStack.Screen
+        name={CHANNEL_CHAT_SCREEN}
+        component={ChannelChatScreen}
+        options={{ headerShown: false }}
+      />
+      <HomeScreenStack.Screen
+        name={CHAT_SCREEN}
+        component={ChatScreen}
+        options={{ headerShown: false }}
       />
     </HomeScreenStack.Navigator>
   );
