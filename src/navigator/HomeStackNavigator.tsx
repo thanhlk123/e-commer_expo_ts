@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { FontAwesome } from "@expo/vector-icons";
 
 import HomeMainScreen from "screens/homeStackScreen/HomeScreen/index";
-import ShopScreen from "@screens/homeStackScreen/ShopScreen";
+import ShopScreen from "screens/homeStackScreen/ShopScreen/index";
 import SalesScreen from "@screens/homeStackScreen/SalesScreen";
 import HomeSearchScreen from "screens/homeStackScreen/SearchScreen/index";
 import ChannelChatScreen from "@screens/homeStackScreen/ChatScreen/ChannelScreen"

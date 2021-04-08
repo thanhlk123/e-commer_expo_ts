@@ -18,7 +18,7 @@ export default class Topic extends Component<
     this.state = {
       expanded: false,
       animation: new Animated.Value(48),
-      maxHeight: 0,
+      maxHeight: 300,
       minHeight: 0,
     };
   }
@@ -39,12 +39,12 @@ export default class Topic extends Component<
     Animated.timing(this.state.animation, {
       toValue: finalValue,
       duration: 500,
-      useNativeDriver: true
+      useNativeDriver: false
     }).start();
   }
 
   _setMaxHeight(event) {
-    let maxHeight = event.nativeEvent.layout.height;
+    let maxHeight = event.nativeEvent.layout.height + 20;
     this.setState({
       maxHeight: maxHeight,
     });
