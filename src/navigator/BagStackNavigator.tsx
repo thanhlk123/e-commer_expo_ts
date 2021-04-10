@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
 export const BagStackNavigator = (props: any) => {
   const categoriesMainOptions = () => {
     let headerTitleAlign = "center";
-    let headerTitle = "Categories";
+    let headerTitle = "Bag";
     let headerStyle = { backgroundColor: "#3b5f8a", opacity: 1 };
     let headerTintColor = "white";
     let headerRight = () => (

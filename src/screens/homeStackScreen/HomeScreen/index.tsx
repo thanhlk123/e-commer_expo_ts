@@ -23,6 +23,7 @@ import QcComponent from "./common/QcComponent";
 import {
   HOME_SEARCH_SCREEN,
   CHANNEL_CHAT_SCREEN,
+  BAG
 } from "@constants/NavigationTypes";
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -75,11 +76,7 @@ export default class HomeMainScreen extends Component<
               <Feather name="search" size={24} color="#595959" />
             </TouchableOpacity>
 
-            <BtnSmall
-              onPress={() =>
-                this.props.navigation.navigate(CHANNEL_CHAT_SCREEN)
-              }
-            >
+            <BtnSmall onPress={() => this.props.navigation.navigate(BAG)}>
               <AntDesign name="shoppingcart" size={24} color="#595959" />
               <PostTaggedContainer>
                 <Text style={{ color: "white", fontSize: 11 }}>9</Text>

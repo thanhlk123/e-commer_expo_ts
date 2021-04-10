@@ -8,4 +8,6 @@ export const SET_DARK_MODE = "SET_DARK_MODE";
 export const SIGN_OUT = "SIGN_OUT";
 export const SIGN_OUT_SUCCESS = "SIGN_OUT_SUCCESS";
 export const SIGN_OUT_FAIL = "SIGN_OUT_FAIL";
-
+export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
+export const REMOVE_ITEM_IN_CART = "REMOVE_ITEM_IN_CART";
+export const UPDATE_ITEM_IN_CART = "UPDATE_ITEM_IN_CART";
