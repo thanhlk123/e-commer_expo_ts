@@ -2,12 +2,33 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import styled from "styled-components/native";
+import { connect } from "react-redux";
 
 import ListItem from "./common/ListItem";
 import ListOption from "./common/ListOptionComponent";
 import BillComponent from "./common/BillComponent";
+import {
+  RemoveItemInCartAction,
+  AddItemToCartAction,
+  UpdateItemInCartAction,
+} from "@appRedux/actionTypes/bagScreenAction";
+import { BagProps } from "@appRedux/reducers/bagReducer/index";
 
-const MyBagHomeScreen = (props: any) => {
+type ScreenProps = {
+  bag: BagProps;
+  navigation: any;
+  removeItemInCart: (payload) => void;
+  addItemInCart: (payload) => void;
+  updateItemInCart: (payload) => void;
+};
+
+const MyBagHomeScreen = ({
+  bag,
+  navigation,
+  removeItemInCart,
+  addItemInCart,
+  updateItemInCart,
+}: ScreenProps) => {
   const [priceTotal, setPriceTotal] = useState(418000);
   const [itemTotal, setItemTotal] = useState(1);
   const [allItemTotal, setAllItemTotal] = useState(1);
@@ -18,7 +39,11 @@ const MyBagHomeScreen = (props: any) => {
 
   return (
     <ScrollView>
-      <ListItem allItemTotal={allItemTotal} priceTotal={priceTotal} />
+      <ListItem
+        allItemTotal={allItemTotal}
+        priceTotal={priceTotal}
+        data={bag.data}
+      />
 
       <ListOption />
 
@@ -33,7 +58,7 @@ const MyBagHomeScreen = (props: any) => {
         <TouchableOpacity
           style={styles.btnOrder}
           onPress={() => {
-            props.navigation.navigate("AddressScreen");
+            navigation.navigate("AddressScreen");
           }}
         >
           <TitleBtn>PLACE ORDER</TitleBtn>
@@ -62,4 +87,18 @@ const TitleBtn = styled.Text`
   font-size: 18px;
 `;
 
-export default MyBagHomeScreen;
+const mapStateToProps = (state) => {
+  const { bag } = state;
+  return {
+    bag,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeItemInCart: (payload) => dispatch(RemoveItemInCartAction(payload)),
+    addItemInCart: (payload) => dispatch(AddItemToCartAction(payload)),
+    updateItemInCart: (payload) => dispatch(UpdateItemInCartAction(payload)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(MyBagHomeScreen);

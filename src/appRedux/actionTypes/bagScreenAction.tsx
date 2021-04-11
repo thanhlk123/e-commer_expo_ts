@@ -11,10 +11,10 @@ export const AddItemToCartAction = (payload) => {
   };
 };
 
-export const RemoveItemInCartAction = (payload) => {
+export const RemoveItemInCartAction = (itemId: number) => {
   return {
     type: REMOVE_ITEM_IN_CART,
-    payload,
+    payload: itemId,
   };
 };
 

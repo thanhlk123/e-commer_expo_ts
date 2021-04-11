@@ -1,16 +1,42 @@
-import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
+import { connect } from "react-redux";
+import { AntDesign } from "@expo/vector-icons";
+
+import { CartItem as CartItemProps } from "@constants/BagScreen";
+import CountItem from "./CountItemComponent";
+
+import {
+  RemoveItemInCartAction,
+  AddItemToCartAction,
+  UpdateItemInCartAction,
+} from "@appRedux/actionTypes/bagScreenAction";
 
 type ScreenProps = {
-  item?: any;
+  item: CartItemProps | any;
+  removeItemInCart: (payload) => void;
+  addItemInCart: (payload) => void;
+  updateItemInCart: (payload) => void;
 };
-const CartItem = ({ item }: ScreenProps) => {
+const CartItem = ({
+  item,
+  removeItemInCart,
+  addItemInCart,
+  updateItemInCart,
+}: ScreenProps) => {
+  const [payload, setPayload] = useState(null);
+
   return (
-    <Container
-      style={styles.shadow}
-    >
-      <Row style ={{paddingHorizontal: 12}}>
+    <Container style={styles.shadow}>
+      <Row style={{ paddingHorizontal: 12 }}>
+        <TouchableOpacity
+          onPress={() => removeItemInCart(item.id)}
+          style={styles.icClose}
+        >
+          <AntDesign name="close" size={24} color="grey" />
+        </TouchableOpacity>
+
         <Image
           source={{
             uri:
@@ -18,29 +44,28 @@ const CartItem = ({ item }: ScreenProps) => {
           }}
           style={styles.imgItem}
         />
-        <View style={{ paddingVertical: 10, marginLeft: 10 }}>
+        <View style={{ paddingVertical: 10, marginLeft: 10, paddingRight: 10 }}>
           <Text>FabAlley Women Gray Classic Fit</Text>
           <Text>Casual Top</Text>
           <Text>Sold by: FunFash</Text>
-          <Text color="#c2a959">Only 1 unit in Stock</Text>
-          <Text
-            style={{ fontWeight: "700", textDecorationLine: "line-through" }}
-          >
-            $1299
-          </Text>
-          <Text color="blue">$799</Text>
+          <Row>
+            <Text style={{ fontWeight: "700" }} color="red">
+              $799
+            </Text>
+            <Text
+              style={{
+                marginLeft: 10,
+                textDecorationLine: "line-through",
+                color: "grey",
+              }}
+            >
+              $1299
+            </Text>
+          </Row>
+          <CountItem />
         </View>
       </Row>
       <View style={styles.separator} />
-      <Row style={{ justifyContent: "space-around", paddingVertical: 10 }}>
-        <Btn>
-          <Text color="#666666"> REMOVE</Text>
-        </Btn>
-        <View style={styles.horizontalSeparator} />
-        <Btn>
-          <Text color="#666666"> MOVE TO WISHLIST</Text>
-        </Btn>
-      </Row>
     </Container>
   );
 };
@@ -71,6 +96,12 @@ const styles = StyleSheet.create({
 
     elevation: 5,
   },
+  icClose: {
+    position: "absolute",
+    top: 0,
+    right: 5,
+    padding: 8,
+  },
 });
 
 type StyledProps = {
@@ -78,10 +109,10 @@ type StyledProps = {
 };
 
 const Container = styled.View<StyledProps>`
-    background-color: ${props => props.color || "#ffffff"};
-    margin-horizontal: 12px;
-    margin-top: 10px
-`
+  background-color: ${(props) => props.color || "#ffffff"};
+  margin-horizontal: 12px;
+  margin-top: 10px;
+`;
 const Row = styled.View`
   flex-direction: row;
 `;
@@ -93,4 +124,16 @@ const Text = styled.Text<StyledProps>`
   font-size: 14px;
 `;
 
-export default CartItem;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeItemInCart: (payload: number) =>
+      dispatch(RemoveItemInCartAction(payload)),
+    addItemInCart: (payload) => dispatch(AddItemToCartAction(payload)),
+    updateItemInCart: (payload) => dispatch(UpdateItemInCartAction(payload)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CartItem);

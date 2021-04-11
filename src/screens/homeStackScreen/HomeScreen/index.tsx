@@ -10,6 +10,7 @@ import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import styled from "styled-components/native";
+import { connect } from "react-redux";
 
 import TrendingsData from "@demoData/Trendings";
 import { styles } from "./common/Styles";
@@ -19,16 +20,15 @@ import TrendingComponent from "./common/TrendingComponent";
 import TodayPickComponent from "./common/TodayPickComponent";
 import LimitedSaleComponent from "./common/LimitedSaleComponent";
 import QcComponent from "./common/QcComponent";
-
 import {
   HOME_SEARCH_SCREEN,
   CHANNEL_CHAT_SCREEN,
-  BAG
+  BAG,
 } from "@constants/NavigationTypes";
-import { NavigationContainer } from "@react-navigation/native";
+import { BagProps } from "@appRedux/reducers/bagReducer/index";
 
-export default class HomeMainScreen extends Component<
-  { navigation: any },
+class HomeMainScreen extends Component<
+  { navigation: any; bag: BagProps },
   { isSearching: boolean; valueSearch: string }
 > {
   constructor(props) {
@@ -38,6 +38,11 @@ export default class HomeMainScreen extends Component<
       valueSearch: "",
     };
   }
+
+  _getCountListItemInCart = () => {
+    return this.props.bag.data.length || 0
+  }
+
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: "#3b5f8a" }}>
@@ -79,7 +84,9 @@ export default class HomeMainScreen extends Component<
             <BtnSmall onPress={() => this.props.navigation.navigate(BAG)}>
               <AntDesign name="shoppingcart" size={24} color="#595959" />
               <PostTaggedContainer>
-                <Text style={{ color: "white", fontSize: 11 }}>9</Text>
+                <Text style={{ color: "white", fontSize: 11 }}>
+                  {this._getCountListItemInCart()}
+                </Text>
               </PostTaggedContainer>
             </BtnSmall>
 
@@ -118,6 +125,17 @@ export default class HomeMainScreen extends Component<
   }
 }
 
+const mapStateToProps = (state) => {
+  const { bag } = state;
+  return {
+    bag,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
 const BtnSmall = styled.TouchableOpacity`
   padding-right: 10px;
 `;
@@ -133,3 +151,5 @@ const PostTaggedContainer = styled.View`
   justify-content: center;
   align-items: center;
 `;
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeMainScreen);

@@ -2,8 +2,10 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import styled from "styled-components/native";
+import { useNavigation } from "@react-navigation/native";
 
 const ListOptionComponent = () => {
+  const navigation = useNavigation();
   return (
     <View>
       <View style={styles.headerContent}>
@@ -11,10 +13,13 @@ const ListOptionComponent = () => {
       </View>
 
       <View style={[styles.containerOption, styles.shadowBox]}>
-        <TouchableOpacity style={styles.buttonOption}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("VoucherScreen")}
+          style={styles.buttonOption}
+        >
           <View style={styles.rowOption}>
             <AntDesign name="setting" size={22} color="gray" />
-            <Text style={styles.textPrice}>Apply coupon</Text>
+            <Text style={styles.textPrice}>Apply voucher</Text>
           </View>
           <AntDesign name="right" size={20} color="gray" />
         </TouchableOpacity>

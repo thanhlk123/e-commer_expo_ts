@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
 
 import CartItem from "./CartItem";
+import { CartItem as CartItemDataProps } from "@constants/BagScreen";
 
 type ScreenProps = {
   allItemTotal: number;
   priceTotal: number;
+  data: CartItemDataProps[] | any;
 };
 
-const ListItem = ({ allItemTotal, priceTotal }: ScreenProps) => {
+const ListItem = ({ allItemTotal, priceTotal, data = [] }: ScreenProps) => {
+  console.log("data", data);
   return (
     <View>
       <View
@@ -39,8 +42,10 @@ const ListItem = ({ allItemTotal, priceTotal }: ScreenProps) => {
           TOTAL: {priceTotal}
         </Text>
       </View>
-      <CartItem />
-      <CartItem />
+      {data.map((item, index) => {
+        return <CartItem key={item.id.toString() + index} item={item} />;
+      })}
+
       {/* task list data choose */}
     </View>
   );
