@@ -8,9 +8,17 @@ import {
 } from "react-native";
 import styled from "styled-components/native";
 
-const CountItemComponent = () => {
-  const [countNumber, setCountNumber] = useState<any>(1);
+type ComponentProps = {
+  value: number;
+  setValue: any;
+};
 
+const CountItemComponent = ({ value, setValue }: ComponentProps) => {
+  const [countNumber, setCountNumber] = useState<any>(value);
+
+  useEffect(() => {
+    setValue(countNumber);
+  }, [countNumber]);
   return (
     <Row>
       <Btn
@@ -26,7 +34,7 @@ const CountItemComponent = () => {
       </Btn>
       <TextInput
         style={styles.inputField}
-        value={countNumber.toString()}
+        value={value.toString()}
         onChangeText={(text) => setCountNumber(parseInt(text))}
         keyboardType={"numeric"}
       />

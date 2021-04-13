@@ -8,4 +8,5 @@ export type CartItem = {
     shopName: string;
     price: number;
     originPrice:number;
+    isSelected: boolean;
 }

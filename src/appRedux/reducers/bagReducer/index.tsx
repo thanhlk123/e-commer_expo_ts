@@ -7,6 +7,10 @@ import { CartItem } from "@constants/BagScreen";
 
 export type BagProps = {
   data: CartItem[];
+  totalPrice: number;
+  totalDiscount: number;
+  shippingFee: number;
+  totalPayment: number;
   isLoading: boolean;
 };
 
@@ -23,21 +27,27 @@ const initData = {
       price: 799,
       originPrice: 1299,
       type: "Casual Top",
+      isSelected: false,
     },
     {
       id: 2,
       url:
-        "http://image.vietnamnews.vn/uploadvnnews/Article/2021/3/18/142705_hoa.jpg",
+        "https://product.hstatic.net/200000163831/product/z2106102282361_141eac15bbfa3d0ccb8dbde75918965c_de5fea53694d46868dc14175b4e3703d_master.jpg",
       totalInStock: 3,
-      totalOrder: 2,
+      totalOrder: 10,
       name: "FabAlley Women Gray Classic Fit",
       shopName: "FunFash",
       price: 799,
       originPrice: 1299,
       type: "Casual Top",
+      isSelected: false,
     },
   ],
   isLoading: false,
+  totalPrice: 0,
+  totalDiscount: 0,
+  shippingFee: 0,
+  totalPayment: 0,
 };
 
 const addItemToCart = (state: BagProps, payload) => {

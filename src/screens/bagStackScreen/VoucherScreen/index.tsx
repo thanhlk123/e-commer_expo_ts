@@ -102,7 +102,7 @@ export const VoucherItem = ({
     >
       <View style={styles.voucherLogo}>
         <Text style={styles.voucherTitle}>{item.name}</Text>
-        <View style ={{position: "absolute", top: 0, left:0}}>
+        <View style={{ position: "absolute", top: 0, left: 0 }}>
           <Svg height={120} width={20}>
             {RenderTicketBorder(120)}
           </Svg>
@@ -241,7 +241,9 @@ const Index = () => {
           })}
         </ScrollView>
         <BtnApply>
-          <BtnTitle color={"#fff"}>Apply voucher</BtnTitle>
+          <BtnTitle color={"#fff"} onPress={() => navigation.goBack()}>
+            Apply voucher
+          </BtnTitle>
         </BtnApply>
       </View>
     </SafeAreaView>

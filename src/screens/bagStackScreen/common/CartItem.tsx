@@ -28,6 +28,7 @@ const CartItem = ({
 }: ScreenProps) => {
   const [payload, setPayload] = useState(null);
   const [isChecked, setChecked] = useState(false);
+  const [totalOrder, setTotalOrder] = useState(item.totalOrder);
 
   return (
     <Container style={styles.shadow}>
@@ -39,20 +40,28 @@ const CartItem = ({
           <AntDesign name="close" size={24} color="grey" />
         </TouchableOpacity>
 
+        <View style={styles.checkboxContainer}>
+          <Checkbox
+            value={isChecked}
+            color={"#3b5f8a"}
+            onChange={() => setChecked(!isChecked)}
+          />
+        </View>
+
         <Image
           source={{
             uri:
-              "http://image.vietnamnews.vn/uploadvnnews/Article/2021/3/18/142705_hoa.jpg",
+              item.url,
           }}
           style={styles.imgItem}
         />
         <View style={{ paddingVertical: 10, marginLeft: 10, paddingRight: 10 }}>
-          <Text>FabAlley Women Gray Classic Fit</Text>
-          <Text>Casual Top</Text>
-          <Text>Sold by: FunFash</Text>
+          <Text>{item.name || "-"}</Text>
+          <Text>{item.type || "-"}</Text>
+          <Text>Sold by: {item.shopName || "-"}</Text>
           <Row>
             <Text style={{ fontWeight: "700" }} color="red">
-              $799
+              ${item.price}
             </Text>
             <Text
               style={{
@@ -61,7 +70,7 @@ const CartItem = ({
                 color: "grey",
               }}
             >
-              $1299
+              {item.originPrice ? `$${item.originPrice}` : ""}
             </Text>
           </Row>
           <Row
@@ -71,8 +80,7 @@ const CartItem = ({
               marginTop: 10,
             }}
           >
-            <CountItem />
-            <Checkbox value={isChecked} color={"#3b5f8a"} onChange={() => setChecked(!isChecked)} />
+            <CountItem value={totalOrder} setValue={setTotalOrder} />
           </Row>
         </View>
       </Row>
@@ -116,6 +124,12 @@ const styles = StyleSheet.create({
   checkbox: {
     width: 20,
     height: 20,
+  },
+  checkboxContainer: {
+    position: "absolute",
+    bottom: 5,
+    right: 5,
+    padding: 8,
   },
 });
 

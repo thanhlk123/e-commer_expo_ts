@@ -36,8 +36,7 @@ const BillComponent = ({
       </View>
       <BillItem title={"Bag Total"} value={priceTotal} />
       <BillItem title={"Bag Discounts"} value={bagDiscount} />
-      <BillItem title={"Sub Total"} value={subTotal} />
-      <BillItem title={"Counpon Discounts"} value={coupon} />
+      <BillItem title={"Shipping Fee"} value={subTotal} />
       <BillItem
         title={"Total Payable"}
         value={priceTotal - subTotal - coupon}
