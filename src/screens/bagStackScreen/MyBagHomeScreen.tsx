@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, SafeAreaView } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 import { connect } from "react-redux";
@@ -13,6 +13,7 @@ import {
   UpdateItemInCartAction,
 } from "@appRedux/actionTypes/bagScreenAction";
 import { BagProps } from "@appRedux/reducers/bagReducer/index";
+import HeaderComponent from "@components/HeaderComponent";
 
 type ScreenProps = {
   bag: BagProps;
@@ -38,33 +39,42 @@ const MyBagHomeScreen = ({
   const [totalPayable, setTotalPayable] = useState(0);
 
   return (
-    <ScrollView>
-      <ListItem
-        allItemTotal={allItemTotal}
-        priceTotal={priceTotal}
-        data={bag.data}
-      />
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#3b5f8a" }}>
+      <View style={{ flex: 1, backgroundColor: "#fffF" }}>
+        <HeaderComponent
+          title={"Bag"}
+          onPressLeft={() => navigation.goBack()}
+          icLeft="back"
+        />
+        <ScrollView>
+          <ListItem
+            allItemTotal={allItemTotal}
+            priceTotal={priceTotal}
+            data={bag.data}
+          />
 
-      <ListOption />
+          <ListOption />
 
-      <BillComponent
-        priceTotal={priceTotal}
-        subTotal={subTotal}
-        coupon={coupon}
-        bagDiscount={bagDiscount}
-      />
+          <BillComponent
+            priceTotal={priceTotal}
+            subTotal={subTotal}
+            coupon={coupon}
+            bagDiscount={bagDiscount}
+          />
 
-      <View style={styles.orderBtnContainer}>
-        <TouchableOpacity
-          style={styles.btnOrder}
-          onPress={() => {
-            navigation.navigate("AddressScreen");
-          }}
-        >
-          <TitleBtn>PLACE ORDER</TitleBtn>
-        </TouchableOpacity>
+          <View style={styles.orderBtnContainer}>
+            <TouchableOpacity
+              style={styles.btnOrder}
+              onPress={() => {
+                navigation.navigate("AddressScreen");
+              }}
+            >
+              <TitleBtn>PLACE ORDER</TitleBtn>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 

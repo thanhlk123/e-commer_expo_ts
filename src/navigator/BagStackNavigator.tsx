@@ -89,22 +89,22 @@ export const BagStackNavigator = (props: any) => {
       <Stack.Screen
         name="MyBagHomeScreen"
         component={MyBagHomeScreen}
-        options={BagHomeScreenOptions()}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="AddressScreen"
         component={AdressScreen}
-        options={listCategoriesOptions()}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="ConfirmScreen"
         component={ConfirmScreen}
-        options={listCategoriesOptions()}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="PaymentSrceen"
         component={PaymentScreen}
-        options={listCategoriesOptions()}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="VoucherScreen"

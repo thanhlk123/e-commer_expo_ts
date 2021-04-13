@@ -51,7 +51,6 @@ const Btn = styled.TouchableOpacity<StyledProps>`
 
 const Row = styled.View`
   flex-direction: row;
-  margin-top: 10px;
 `;
 const styles = StyleSheet.create({
   inputField: {

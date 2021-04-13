@@ -6,6 +6,7 @@ import { AntDesign } from "@expo/vector-icons";
 
 import { CartItem as CartItemProps } from "@constants/BagScreen";
 import CountItem from "./CountItemComponent";
+import Checkbox from "@components/Checkbox";
 
 import {
   RemoveItemInCartAction,
@@ -26,6 +27,7 @@ const CartItem = ({
   updateItemInCart,
 }: ScreenProps) => {
   const [payload, setPayload] = useState(null);
+  const [isChecked, setChecked] = useState(false);
 
   return (
     <Container style={styles.shadow}>
@@ -62,7 +64,16 @@ const CartItem = ({
               $1299
             </Text>
           </Row>
-          <CountItem />
+          <Row
+            style={{
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginTop: 10,
+            }}
+          >
+            <CountItem />
+            <Checkbox value={isChecked} color={"#3b5f8a"} onChange={() => setChecked(!isChecked)} />
+          </Row>
         </View>
       </Row>
       <View style={styles.separator} />
@@ -101,6 +112,10 @@ const styles = StyleSheet.create({
     top: 0,
     right: 5,
     padding: 8,
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
   },
 });
 
