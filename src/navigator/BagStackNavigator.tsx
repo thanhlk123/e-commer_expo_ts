@@ -8,6 +8,7 @@ import AdressScreen from "@screens/bagStackScreen/AddressScreen";
 import ConfirmScreen from "@screens/bagStackScreen/ConfirmScreen";
 import PaymentScreen from "@screens/bagStackScreen/PaymentScreen";
 import VoucherScreen from "@screens/bagStackScreen/VoucherScreen/index";
+import VoucherDetailScreen from "@screens/bagStackScreen/VoucherScreen/VoucherDetailScreen";
 
 const Stack = createStackNavigator();
 
@@ -43,7 +44,12 @@ export const BagStackNavigator = (props: any) => {
     let headerBackTitleVisible = true;
     let headerLeft = () => (
       <TouchableOpacity onPress={() => props.navigation.goBack()}>
-        <Text style={styles.backButton}>Back</Text>
+        <Ionicons
+          style={{ paddingLeft: 20 }}
+          name="md-arrow-back"
+          size={24}
+          color="white"
+        />
       </TouchableOpacity>
     );
     return {
@@ -62,7 +68,12 @@ export const BagStackNavigator = (props: any) => {
     let headerBackTitleVisible = true;
     let headerLeft = () => (
       <TouchableOpacity onPress={() => props.navigation.goBack()}>
-        <Text style={styles.backButton}>Back</Text>
+        <Ionicons
+          style={{ paddingLeft: 20 }}
+          name="md-arrow-back"
+          size={24}
+          color="white"
+        />
       </TouchableOpacity>
     );
     return {
@@ -98,7 +109,12 @@ export const BagStackNavigator = (props: any) => {
       <Stack.Screen
         name="VoucherScreen"
         component={VoucherScreen}
-        options={voucherScreenOptions()}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="VoucherDetailScreen"
+        component={VoucherDetailScreen}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
