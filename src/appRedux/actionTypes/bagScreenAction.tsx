@@ -4,7 +4,9 @@ import {
   UPDATE_ITEM_IN_CART,
 } from "@constants/ActionType";
 
-export const AddItemToCartAction = (payload) => {
+import { CartItem } from "@constants/BagScreen";
+
+export const AddItemToCartAction = (payload: CartItem) => {
   return {
     type: ADD_ITEM_TO_CART,
     payload,
@@ -18,7 +20,7 @@ export const RemoveItemInCartAction = (itemId: number) => {
   };
 };
 
-export const UpdateItemInCartAction = (payload) => {
+export const UpdateItemInCartAction = (payload: CartItem) => {
   return {
     type: UPDATE_ITEM_IN_CART,
     payload,

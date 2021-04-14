@@ -47,19 +47,15 @@ const MyBagHomeScreen = ({
           icLeft="back"
         />
         <ScrollView>
-          <ListItem
-            allItemTotal={allItemTotal}
-            priceTotal={priceTotal}
-            data={bag.data}
-          />
+          <ListItem priceTotal={bag.totalPrice} data={bag.data} />
 
           <ListOption />
 
           <BillComponent
-            priceTotal={priceTotal}
-            subTotal={subTotal}
-            coupon={coupon}
-            bagDiscount={bagDiscount}
+            totalDiscount={bag.totalDiscount}
+            totalPrice={bag.totalPrice}
+            shippingFee={bag.shippingFee}
+            totalPayable = {bag.totalPayment}
           />
 
           <View style={styles.orderBtnContainer}>

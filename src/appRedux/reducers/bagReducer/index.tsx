@@ -27,7 +27,7 @@ const initData = {
       price: 799,
       originPrice: 1299,
       type: "Casual Top",
-      isSelected: false,
+      isSelected: true,
     },
     {
       id: 2,
@@ -40,7 +40,7 @@ const initData = {
       price: 799,
       originPrice: 1299,
       type: "Casual Top",
-      isSelected: false,
+      isSelected: true,
     },
   ],
   isLoading: false,
@@ -51,25 +51,56 @@ const initData = {
 };
 
 const addItemToCart = (state: BagProps, payload) => {
+  let newData = [...state.data, payload];
+
+  let totalPrice = updatePrice(newData);
+
+  let totalDiscount = 0.2 * totalPrice;
   return {
     ...state,
-    data: payload,
+    data: [...state.data, payload],
+    totalPrice,
+    totalDiscount,
   };
 };
 
 const removeItemInCart = (state: BagProps, id) => {
   let newData = state.data.filter((e) => e.id !== id);
+  let totalPrice = updatePrice(newData);
+  let totalDiscount = 0.2 * totalPrice;
   return {
     ...state,
     data: newData,
+    totalPrice,
+    totalDiscount,
   };
 };
 
 const updateItemInCart = (state: BagProps, payload) => {
+  let originData = [...state.data];
+  let findIndex = originData.findIndex((e) => e.id === payload.id);
+  if (findIndex > -1) {
+    originData[findIndex] = payload;
+  }
+
+  let totalPrice = updatePrice(originData);
+  let totalDiscount = 0.2 * totalPrice;
+
   return {
     ...state,
-    data: payload,
+    data: originData,
+    totalPrice,
+    totalDiscount,
   };
+};
+
+const updatePrice = (data: CartItem[]) => {
+  return data.reduce((a: number, b) => {
+    if (b.isSelected) {
+      return a + b.totalOrder * b.price;
+    }
+    return a;
+  }, 0);
 };
 
 const bagReducer = (state: BagProps = initData, action) => {

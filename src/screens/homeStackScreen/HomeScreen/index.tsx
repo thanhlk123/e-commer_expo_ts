@@ -58,6 +58,8 @@ class HomeMainScreen extends Component<
                 justifyContent: "space-between",
                 alignItems: "center",
                 flexDirection: "row",
+                borderBottomWidth: 0.5,
+                borderBottomColor: "#D5D5D5"
               },
               styles.shadowStyle,
             ]}

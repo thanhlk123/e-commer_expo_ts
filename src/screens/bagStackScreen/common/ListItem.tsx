@@ -6,16 +6,25 @@ import CartItem from "./CartItem";
 import { CartItem as CartItemDataProps } from "@constants/BagScreen";
 
 type ScreenProps = {
-  allItemTotal: number;
   priceTotal: number;
   data: CartItemDataProps[] | any;
 };
 
-const ListItem = ({ allItemTotal, priceTotal, data = [] }: ScreenProps) => {
+const ListItem = ({ priceTotal, data = [] }: ScreenProps) => {
+  const _countItemSelected = (data: CartItemDataProps[]) => {
+    return (
+      data.reduce((a: number, b: CartItemDataProps) => {
+        if (b.isSelected) {
+          return a + 1;
+        }
+        return a;
+      }, 0) || 0
+    );
+  };
   return (
     <View>
       <View style={styles.titleGroups}>
-        <Title>ITEMS ({allItemTotal}) </Title>
+        <Title>ITEMS ({_countItemSelected(data)}) </Title>
         <Title>TOTAL: {priceTotal}</Title>
       </View>
       {data.map((item, index) => {

@@ -3,10 +3,10 @@ import { View, Text, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 
 type ScreenProps = {
-  priceTotal: number;
-  bagDiscount: number;
-  subTotal: number;
-  coupon: number;
+  totalPrice: number;
+  totalDiscount: number;
+  shippingFee: number;
+  totalPayable: number;
 };
 
 type BillItemProps = {
@@ -18,28 +18,28 @@ const BillItem = ({ title, value }: BillItemProps) => {
   return (
     <View style={[styles.priceDetail, styles.shadowBox]}>
       <Title>{title}: </Title>
-      <ValueText>- {value}đ</ValueText>
+      <ValueText>{value.toFixed(0)} $</ValueText>
     </View>
   );
 };
 
 const BillComponent = ({
-  priceTotal,
-  bagDiscount,
-  subTotal,
-  coupon,
+  totalPrice,
+  totalDiscount,
+  shippingFee,
+  totalPayable,
 }: ScreenProps) => {
   return (
     <View>
       <View style={styles.headerContent}>
         <Label>PRICE DETAILS</Label>
       </View>
-      <BillItem title={"Bag Total"} value={priceTotal} />
-      <BillItem title={"Bag Discounts"} value={bagDiscount} />
-      <BillItem title={"Shipping Fee"} value={subTotal} />
+      <BillItem title={"Bag Total"} value={totalPrice} />
+      <BillItem title={"Bag Discounts"} value={totalDiscount} />
+      <BillItem title={"Shipping Fee"} value={shippingFee} />
       <BillItem
         title={"Total Payable"}
-        value={priceTotal - subTotal - coupon}
+        value={totalPrice + shippingFee - totalDiscount}
       />
     </View>
   );

@@ -26,9 +26,17 @@ const CartItem = ({
   addItemInCart,
   updateItemInCart,
 }: ScreenProps) => {
-  const [payload, setPayload] = useState(null);
+  const [payload, setPayload] = useState({ ...item });
   const [isChecked, setChecked] = useState(false);
   const [totalOrder, setTotalOrder] = useState(item.totalOrder);
+
+  console.log(item);
+  console.log("isChecked", isChecked, totalOrder);
+  useEffect(() => {
+    if (totalOrder !== item.totalOrder || isChecked !== item.isSelected) {
+      updateItemInCart({ ...payload, totalOrder, isSelected: isChecked });
+    }
+  }, [totalOrder, isChecked]);
 
   return (
     <Container style={styles.shadow}>
@@ -50,8 +58,7 @@ const CartItem = ({
 
         <Image
           source={{
-            uri:
-              item.url,
+            uri: item.url,
           }}
           style={styles.imgItem}
         />
@@ -162,7 +169,8 @@ const mapDispatchToProps = (dispatch) => {
     removeItemInCart: (payload: number) =>
       dispatch(RemoveItemInCartAction(payload)),
     addItemInCart: (payload) => dispatch(AddItemToCartAction(payload)),
-    updateItemInCart: (payload) => dispatch(UpdateItemInCartAction(payload)),
+    updateItemInCart: (payload: CartItemProps) =>
+      dispatch(UpdateItemInCartAction(payload)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CartItem);
