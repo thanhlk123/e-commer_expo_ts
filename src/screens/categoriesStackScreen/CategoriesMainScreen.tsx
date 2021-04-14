@@ -8,7 +8,7 @@ import {
   Dimensions,
   Image,
 } from "react-native";
-import Topic from "@components/Topic";
+import Topic from "./common/Topic";
 import { AntDesign } from "@expo/vector-icons";
 import TrendingsData from "@demoData/Trendings";
 import { ScrollView } from "react-native-gesture-handler";

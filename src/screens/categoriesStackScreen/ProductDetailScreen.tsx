@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, SafeAreaView, ScrollView, TextInput, Dimensions } from 'react-native';
 import { FontAwesome, FontAwesome5, AntDesign, Entypo } from '@expo/vector-icons';
 import Carousel from 'react-native-snap-carousel';
+import { navigationRef } from 'RootNavigation';
 
 const { width, height } = Dimensions.get('window')
 
@@ -291,7 +292,9 @@ type ScreenMainProps = {
   activeIndex: number;
   sizeIndex: number;
 };
-export default class ProductDetailScreen extends Component<{}, ScreenMainProps> {
+
+
+export default class ProductDetailScreen extends Component<{navigation: any}, ScreenMainProps> {
   constructor(props) {
     super(props);
     this.state = {
@@ -299,7 +302,7 @@ export default class ProductDetailScreen extends Component<{}, ScreenMainProps> 
       sizeIndex: 0,
     };
   }
-
+   
   _changeActiveIndex = (index, func) => {
     this.setState({ activeIndex: index }, func);
   };
