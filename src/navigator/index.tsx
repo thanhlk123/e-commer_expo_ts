@@ -2,18 +2,26 @@ import React from "react";
 import { StyleSheet, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  SimpleLineIcons,
-  FontAwesome,
-} from "@expo/vector-icons";
+import { createStackNavigator } from "@react-navigation/stack";
+import { SimpleLineIcons, FontAwesome } from "@expo/vector-icons";
 
-import {HomeStackNavigator} from "./HomeStackNavigator";
-import {CategoriesStackNavigator} from "./CategoriesStackNavigator";
+import {
+  HOME,
+  Categories,
+  Notifications,
+  BAG,
+  Profile,
+} from "@constants/NavigationTypes";
+import { Dashboard, ProductDetails } from "@constants/NavigationTypes";
+import { HomeStackNavigator } from "./HomeStackNavigator";
+import { CategoriesStackNavigator } from "./CategoriesStackNavigator";
 import { ProfileStackNavigator } from "./ProfileStackNavigator";
 import { NotificationsStackNavigator } from "./NotificationsStackNavigator";
 import { BagStackNavigator } from "./BagStackNavigator";
+import ProductDetailScreen from "@screens/categoriesStackScreen/ProductDetailScreen";
 
 const Tab = createBottomTabNavigator();
+const RootStack = createStackNavigator();
 
 function BottomTabs() {
   return (
@@ -25,7 +33,7 @@ function BottomTabs() {
             <SimpleLineIcons name="home" color={color} size={17} />
           ),
         }}
-        name="Home"
+        name={HOME}
         component={HomeStackNavigator}
       />
       <Tab.Screen
@@ -35,7 +43,7 @@ function BottomTabs() {
             <SimpleLineIcons name="grid" color={color} size={17} />
           ),
         }}
-        name="Categories"
+        name={Categories}
         component={CategoriesStackNavigator}
       />
       <Tab.Screen
@@ -45,7 +53,7 @@ function BottomTabs() {
             <SimpleLineIcons name="bell" color={color} size={17} />
           ),
         }}
-        name="Notifications"
+        name={Notifications}
         component={NotificationsStackNavigator}
       />
       <Tab.Screen
@@ -55,7 +63,7 @@ function BottomTabs() {
             <SimpleLineIcons name="handbag" color={color} size={17} />
           ),
         }}
-        name="Bag"
+        name={BAG}
         component={BagStackNavigator}
       />
       <Tab.Screen
@@ -65,7 +73,7 @@ function BottomTabs() {
             <FontAwesome name="user-o" color={color} size={17} />
           ),
         }}
-        name="Profile"
+        name={Profile}
         component={ProfileStackNavigator}
       />
     </Tab.Navigator>
@@ -76,16 +84,19 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="#3b5f8a" barStyle="dark-content" />
-      <BottomTabs />
+      <RootStack.Navigator>
+        <RootStack.Screen
+          name={Dashboard}
+          component={BottomTabs}
+          options={{ headerShown: false }}
+        />
+
+        <RootStack.Screen
+          name={ProductDetails}
+          component={ProductDetailScreen}
+          options={{ headerShown: false }}
+        />
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

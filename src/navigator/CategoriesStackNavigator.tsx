@@ -107,11 +107,6 @@ export const CategoriesStackNavigator = (props: any) => {
         component={ListCategoriesScreen}
         options={listCategoriesOptions()}
       />
-      <Stack.Screen
-        name="ProductDetails"
-        component={ProductDetailScreen}
-        options={listCategoriesOptions()}
-      />
     </Stack.Navigator>
   );
 };

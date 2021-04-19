@@ -461,7 +461,7 @@ export default class ProductDetailScreen extends Component<
                 scrollEndDragDebounceValue={1000}
               />
 
-              {/* More Produc Images */}
+              {/* More Product Images */}
               <View style={styles.w_100}>
                 <ScrollView
                   horizontal={true}
@@ -643,7 +643,7 @@ export default class ProductDetailScreen extends Component<
   }
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFF",
