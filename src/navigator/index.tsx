@@ -18,7 +18,8 @@ import { CategoriesStackNavigator } from "./CategoriesStackNavigator";
 import { ProfileStackNavigator } from "./ProfileStackNavigator";
 import { NotificationsStackNavigator } from "./NotificationsStackNavigator";
 import { BagStackNavigator } from "./BagStackNavigator";
-import ProductDetailScreen from "@screens/categoriesStackScreen/ProductDetailScreen";
+import ProductDetailScreen from "@screens/categoriesStackScreen/productDetail/index";
+// import ProductDetailScreen from "@screens/categoriesStackScreen/ProductDetailScreen";
 
 const Tab = createBottomTabNavigator();
 const RootStack = createStackNavigator();

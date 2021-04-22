@@ -1,146 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { View, Text } from "react-native";
 import {
-  View,
-  Text,
-  Image,
-  Dimensions,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import Carousel from "react-native-snap-carousel";
+  FontAwesome,
+  FontAwesome5,
+  AntDesign,
+  Entypo,
+} from "@expo/vector-icons";
 
-import { styles } from "../index";
+import { styles } from "./stylesCommon";
 
-const dataSlide = [
-  {
-    id: 1,
-    imgUrl: require("@assets/images/ProductsDetail/bag-1.jpg"),
-  },
-  {
-    id: 2,
-    imgUrl: require("@assets/images/ProductsDetail/bag-2.jpg"),
-  },
-  {
-    id: 3,
-    imgUrl: require("@assets/images/ProductsDetail/bag-3.jpg"),
-  },
-  {
-    id: 4,
-    imgUrl: require("@assets/images/ProductsDetail/bag-4.jpg"),
-  },
-  {
-    id: 5,
-    imgUrl: require("@assets/images/ProductsDetail/bag-1.jpg"),
-  },
-  {
-    id: 6,
-    imgUrl: require("@assets/images/ProductsDetail/bag-1.jpg"),
-  },
-];
-
-const ProductImage = ({ item }) => {
+const ProductVotes = (data) => {
   return (
-    <View>
-      <Image
-        style={styles.productImg}
-        resizeMode="contain"
-        source={item.imgUrl}
-      />
+    <View style={styles.commonContentContainer}>
+      <FontAwesome name="star" size={16} color="#FFAA43" />
+      <FontAwesome name="star" size={16} color="#FFAA43" />
+      <FontAwesome name="star" size={16} color="#FFAA43" />
+      <FontAwesome name="star-half-empty" size={16} color="#FFAA43" />
+      <FontAwesome name="star-o" size={16} color="#FFAA43" />
+      <Text
+        style={{
+          paddingHorizontal: 5,
+          borderRightWidth: 1,
+          borderRightColor: "gray",
+          fontSize: 16,
+          color: "gray",
+        }}
+      >
+        4.9
+      </Text>
+      <Text
+        style={{
+          paddingHorizontal: 5,
+          paddingBottom: 2,
+          fontSize: 16,
+          color: "gray",
+        }}
+      >
+        Đã bán 2.4k
+      </Text>
     </View>
   );
 };
-
-const ProductThumnail = (data) => {
-  let _press = () => {
-    data.onPressX(
-      data.index,
-      data.slide._carousel._snapToItem(data.index, true, true, true, true)
-    );
-  };
-  return (
-    <View>
-      {data.index == data.activeIndex ? (
-        <TouchableOpacity style={styles.mar_5} onPress={() => _press()}>
-          <Image
-            style={styles.thumnailImg}
-            resizeMode="contain"
-            source={data.url}
-          />
-          <View
-            style={{
-              position: "absolute",
-              top: 0,
-              width: 100,
-              height: 128,
-              backgroundColor: "gray",
-              opacity: 0.6,
-            }}
-          />
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity style={styles.mar_5} onPress={() => _press()}>
-          <Image
-            style={styles.thumnailImg}
-            resizeMode="contain"
-            source={data.url}
-          />
-        </TouchableOpacity>
-      )}
-    </View>
-  );
-};
-
-const { width, height } = Dimensions.get("screen");
 
 const ProductInfoComponent = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const _changeActiveIndex = (index, func) => {
-    setActiveIndex(index);
-  };
   return (
-    <>
-      <Carousel
-        layout={"default"}
-        ref={(c) => {
-          this._carousel = c;
-        }}
-        keyExtractor={(item, index) => `${item.id}`}
-        data={dataSlide}
-        loop={false}
-        renderItem={ProductImage}
-        itemWidth={0.9 * width}
-        itemHeight={250}
-        sliderWidth={0.9 * width}
-        enableSnap={true}
-        onSnapToItem={(index) => setActiveIndex(index)}
-        scrollEndDragDebounceValue={1000}
-      />
+    <View style = {styles.paddingH_10}>
+      <Text style={styles.productNameText}>Backpack double strap</Text>
 
-      {/* More Product Images */}
-      <View style={styles.w_100}>
-        <ScrollView
-          horizontal={true}
-          style={styles.w_100}
-          showsHorizontalScrollIndicator={false}
-          pagingEnabled={true}
-        >
-          {dataSlide.length ? (
-            dataSlide.map((data, index) => (
-              <ProductThumnail
-                url={data.imgUrl}
-                index={index}
-                slide={this}
-                onPressX={_changeActiveIndex}
-                activeIndex={activeIndex}
-              />
-            ))
-          ) : (
-            <View />
-          )}
-        </ScrollView>
+      <ProductVotes />
+
+      <View style={styles.commonContentContainer}>
+        <Text style={styles.promotionPriceText}> 418.000₫ ~ 500.000₫</Text>
+        <Text>
+          (<Text style={styles.costPriceText}> 618.000₫ </Text>)
+        </Text>
       </View>
-    </>
+
+      <View style={styles.mb_10}>
+        <Text style={{ color: "gray" }}>
+          Lacinia porta aenean conubia a ut integer ultrices cras a laoreet erat
+          iaculis mollis cursus ante consectetur consectetur qisque vel rutrum
+          elementum dis a class tempus a.Adipiscing a condimentum condimentum.
+        </Text>
+      </View>
+    </View>
   );
 };
 
