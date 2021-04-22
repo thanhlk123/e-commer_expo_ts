@@ -29,9 +29,7 @@ const CartItem = ({
   const [payload, setPayload] = useState({ ...item });
   const [isChecked, setChecked] = useState(false);
   const [totalOrder, setTotalOrder] = useState(item.totalOrder);
-
-  console.log(item);
-  console.log("isChecked", isChecked, totalOrder);
+  
   useEffect(() => {
     if (totalOrder !== item.totalOrder || isChecked !== item.isSelected) {
       updateItemInCart({ ...payload, totalOrder, isSelected: isChecked });

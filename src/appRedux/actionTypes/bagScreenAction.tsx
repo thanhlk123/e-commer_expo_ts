@@ -7,6 +7,7 @@ import {
 import { CartItem } from "@constants/BagScreen";
 
 export const AddItemToCartAction = (payload: CartItem) => {
+  console.log("herer")
   return {
     type: ADD_ITEM_TO_CART,
     payload,

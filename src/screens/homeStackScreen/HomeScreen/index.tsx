@@ -40,8 +40,10 @@ class HomeMainScreen extends Component<
   }
 
   _getCountListItemInCart = () => {
+    console.log("bag data", this.props.bag)
     return this.props.bag.data.length || 0
   }
+  
 
   render() {
     return (

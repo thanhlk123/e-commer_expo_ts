@@ -63,7 +63,6 @@ const Row = styled.View`
 const styles = StyleSheet.create({
   inputField: {
     paddingHorizontal: 12,
-    paddingVertical: 5,
     borderColor: "#D5D5D5",
     borderWidth: 0.5,
   },

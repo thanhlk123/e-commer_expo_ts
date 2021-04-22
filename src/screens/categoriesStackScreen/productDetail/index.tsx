@@ -3,14 +3,13 @@ import {
   View,
   Text,
   SafeAreaView,
-  StyleSheet,
   ScrollView,
   Modal,
   Image,
-  StatusBar
 } from "react-native";
 import styled from "styled-components/native";
 import { AntDesign } from "@expo/vector-icons";
+import { connect } from "react-redux";
 
 import {
   listSimilarProducts,
@@ -26,9 +25,12 @@ import SimilarProduct from "./common/SimilarProduct";
 import ProductDetails from "./common/ProductDetails";
 import CountItem from "./common/CountItemComponent";
 import ProductOptions from "./common/ProductOptions";
+import { AddItemToCartAction } from "@appRedux/actionTypes/bagScreenAction";
+import { CartItem as CartItemProps } from "@constants/BagScreen";
 
 type MainProps = {
   navigation: any;
+  addItemInCart: (payload) => void;
 };
 
 const BottomBar = ({ setShowPopup }) => {
@@ -36,7 +38,7 @@ const BottomBar = ({ setShowPopup }) => {
     <Row>
       <Btn
         style={styles.bottomBtn}
-        onPress={() => setShowPopup(true)}
+        onPress={() => setShowPopup({ isShow: true, typeId: 0 })}
         color="#3b5f8a"
       >
         <AntDesign name="shoppingcart" size={24} color="#fff" />
@@ -44,7 +46,7 @@ const BottomBar = ({ setShowPopup }) => {
       </Btn>
       <Btn
         style={styles.bottomBtn}
-        onPress={() => setShowPopup(true)}
+        onPress={() => setShowPopup({ isShow: true, typeId: 1 })}
         color="red"
       >
         <TitleBtn color="#fff">Buy</TitleBtn>
@@ -52,9 +54,25 @@ const BottomBar = ({ setShowPopup }) => {
     </Row>
   );
 };
-const index = ({ navigation }: MainProps) => {
-  const [isShowPopup, setShowPopup] = useState(false);
+const index = ({ navigation, addItemInCart }: MainProps) => {
+  const [isShowPopup, setShowPopup] = useState({ isShow: false, typeId: 0 });
   const [totalOrder, setTotalOrder] = useState(0);
+  const [payload, setPayload] = useState<CartItemProps>({
+    id: 0,
+    url:
+      "http://image.vietnamnews.vn/uploadvnnews/Article/2021/3/18/142705_hoa.jpg",
+    totalInStock: 12,
+    totalOrder: 1,
+    name: "FabAlley Women Gray Classic Fit",
+    shopName: "FunFash",
+    price: 799,
+    originPrice: 1299,
+    type: "Casual Top",
+    isSelected: true,
+    options: {
+      sizeId: 0
+    }
+  });
   return (
     <>
       <SafeAreaView style={{ flex: 0, backgroundColor: "#3b5f8a" }} />
@@ -80,7 +98,11 @@ const index = ({ navigation }: MainProps) => {
 
           <SimilarProduct data={listSimilarProducts} />
         </ScrollView>
-        <Modal transparent = {true} animationType={"fade"} visible={isShowPopup}>
+        <Modal
+          transparent={true}
+          animationType={"fade"}
+          visible={isShowPopup.isShow}
+        >
           <BackgroundBlur />
           <View style={styles.contentPopup}>
             <Row
@@ -98,14 +120,17 @@ const index = ({ navigation }: MainProps) => {
                     uri:
                       "https://tuixachkimlong.vn/wp-content/uploads/balo-kim-long-kl-024-den-1.jpg",
                   }}
-                  resizeMode = "cover"
+                  resizeMode="cover"
                 />
                 <View style={{ marginLeft: 10 }}>
-                  <Txt color = {'red'}>20000 đ</Txt>
-                  <Txt color = "#666666">Stock: 12</Txt>
+                  <Txt color={"red"}>20000 đ</Txt>
+                  <Txt color="#666666">Stock: 12</Txt>
                 </View>
               </Row>
-              <Btn onPress={() => setShowPopup(false)} color={"transparent"}>
+              <Btn
+                onPress={() => setShowPopup({ isShow: false, typeId: 0 })}
+                color={"transparent"}
+              >
                 <AntDesign name="close" size={24} color="black" />
               </Btn>
             </Row>
@@ -125,12 +150,35 @@ const index = ({ navigation }: MainProps) => {
               <Text>Quantity</Text>
               <CountItem value={totalOrder} setValue={setTotalOrder} />
             </Row>
-            <Btn style={styles.btn_popUp} color="red">
-              <Text style={{ color: "#fff", fontSize: 14 }}>Buy</Text>
-            </Btn>
+            {isShowPopup.typeId ? (
+              <Btn
+                disabled={totalOrder === 0}
+                style={styles.btn_popUp}
+                color={totalOrder === 0 ? "#D5D5D5" : "red"}
+                onPress = {() => {
+                  // addItemInCart({...payload, totalOrder:totalOrder});
+                  // setShowPopup({isShow: false, typeId:0})
+                  navigation.goBack();
+                }}
+              >
+                <Text style={{ color: "#fff", fontSize: 14 }}>Buy</Text>
+              </Btn>
+            ) : (
+              <Btn
+                disabled={totalOrder === 0}
+                style={styles.btn_popUp}
+                color={totalOrder === 0 ? "#D5D5D5" : "red"}
+                onPress = {() => {
+                  addItemInCart({...payload, totalOrder:totalOrder});
+                  setShowPopup({isShow: false, typeId:0})
+                }}
+              >
+                <Text style={{ color: "#fff", fontSize: 14 }}>Add to Cart</Text>
+              </Btn>
+            )}
           </View>
         </Modal>
-        <BottomBar setShowPopup={setShowPopup} />
+        <BottomBar setShowPopup={setShowPopup}/>
       </SafeAreaView>
     </>
   );
@@ -165,7 +213,17 @@ const BackgroundBlur = styled.View`
 `;
 
 const Txt = styled.Text<StyledProps>`
-  color : ${props => props.color}
-`
+  color: ${(props) => props.color};
+`;
 
-export default index;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addItemInCart: (payload) => dispatch(AddItemToCartAction(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(index);

@@ -58,7 +58,7 @@ const addItemToCart = (state: BagProps, payload) => {
   let totalDiscount = 0.2 * totalPrice;
   return {
     ...state,
-    data: [...state.data, payload],
+    data: newData,
     totalPrice,
     totalDiscount,
   };

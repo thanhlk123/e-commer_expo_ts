@@ -32,8 +32,7 @@ const asyncFunctionMiddleware = storeAPI => next => action => {
     return action(storeAPI.dispatch, storeAPI.getState)
   }
   console.log('prev state', storeAPI.getState())
-  console.log('dispatching', action)
-  let result = next(action);
+  console.log('dispatching', action.type, action)
   console.log('next state', storeAPI.getState())
   // Otherwise, it's a normal action - send it onwards
   return next(action)
@@ -46,7 +45,7 @@ const middlewareProduction = [asyncFunctionMiddleware, sagaMiddleware];
 //   middlewareProduction.push(logger);
 // }
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = createStore(
   persistReducer(persistConfig, rootReducer),
